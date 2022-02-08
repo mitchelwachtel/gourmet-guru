@@ -16,3 +16,4 @@ FOURSQUARE Place Search Reference:
 https://developer.foursquare.com/reference/place-search
 
 https://fastly.4sqi.net/img/general/100x100/67444196_4GI_X_AgFNduNOv91TmR6iV8XRyiFAjyU1dKYb83HeU.jpg
+^^ in foursquare's photo response, you get prefix & suffix. In between, you must add the dimensions of your photo. 100x100 example above.
