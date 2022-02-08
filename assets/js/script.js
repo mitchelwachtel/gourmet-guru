@@ -24,3 +24,7 @@ fetch(requestUrl, options)
   .then(function (data) {
     console.log(data);
   });
+
+  $(document).ready(function(){
+    $('.header').height($(window).height());
+  })
