@@ -1,12 +1,11 @@
-
-
 function createUrl(event) {
   event.preventDefault();
   event.stopPropagation();
 
   // TODO: Grab the City and Query
-  var city = searchInputEl.val();
-  var query;
+
+  var city = inputCity.value;
+  var query = inputRestaurant.value;
 
   var APIkey = "82d5daf2ee6f522b1b5e4b3cf21b2f07";
   var limit = 1;
@@ -58,7 +57,7 @@ function createUrl(event) {
 }
 
 function searchFoursquare(query, city, state, lat, lon) {
-  requestUrl =
+var requestUrl =
     "https://api.foursquare.com/v3/places/search?query=" +
     query +
     "&ll=" +
@@ -70,7 +69,7 @@ function searchFoursquare(query, city, state, lat, lon) {
     method: "GET",
     headers: {
       Accept: "application/json",
-      Authorization: "fsq3a28437clLV4OGd1TqTQpoGeqZglCHRplaWmbBfL4UzY=",
+      Authorization: "fsq3PGxnpcWfbFGOcnbrVvHHpMXUzoL1BBYdikdFgCyCzT0=",
     },
   };
 
@@ -84,16 +83,12 @@ function searchFoursquare(query, city, state, lat, lon) {
       console.log(data);
     });
 }
-  $(document).ready(function(){
-    $('.header').height($(window).height());
-  })
+$(document).ready(function () {
+  $(".header").height($(window).height());
+});
 
-  var inputRestaurant = document.getElementById('inputRestaurant');
-  var inputCity = document.getElementById('inputCity');
-  var searchBtn = document.getElementById('searchBtn');
+var inputRestaurant = document.getElementById("inputRestaurant");
+var inputCity = document.getElementById("inputCity");
+var searchBtn = document.getElementById("searchBtn");
 
-  searchBtn.addEventListener('click', function () {
-    console.log(inputRestaurant.value);
-    console.log(inputCity.value);
-    
-  })
+searchBtn.addEventListener("click", createUrl);

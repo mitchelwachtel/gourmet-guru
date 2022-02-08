@@ -5,6 +5,7 @@ Search Endpoint URL: https://api.yelp.com/v3/businesses/search
 
 FOURSQUARE API KEY:
 fsq3a28437clLV4OGd1TqTQpoGeqZglCHRplaWmbBfL4UzY=
+Test2: fsq3MfBufH9W2b4zM3n+v1Az8bRnu3LD1blFcroq5f/lYSg=
 
 FOURSQUARE Client ID:
 1GGBBCJJ3XKLVADBUAKSGMWY3VVEJ5RDM4BCLQVCJHAAHDHU
