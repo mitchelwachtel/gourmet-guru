@@ -84,3 +84,16 @@ function searchFoursquare(query, city, state, lat, lon) {
       console.log(data);
     });
 }
+  $(document).ready(function(){
+    $('.header').height($(window).height());
+  })
+
+  var inputRestaurant = document.getElementById('inputRestaurant');
+  var inputCity = document.getElementById('inputCity');
+  var searchBtn = document.getElementById('searchBtn');
+
+  searchBtn.addEventListener('click', function () {
+    console.log(inputRestaurant.value);
+    console.log(inputCity.value);
+    
+  })
