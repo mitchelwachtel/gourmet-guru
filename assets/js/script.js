@@ -17,13 +17,21 @@ function processInputs(event) {
 
   // Grab the City and Query
   var city = inputCity.value;
-  var query = inputRestaurant.value;
+  var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
   //   var rating = inputRating.value;
   //   var comment = inputRating.value;
   var saveArray = [];
 
-  findLatLon(city, food);
+  var queryObject = {
+    city: city,
+    restaurantQuery: restaurantQuery,
+    food: food,
+    //   rating: rating,
+    //   comment: comment,
+  };
+
+  findLatLon();
 
   // Use url created to search for the cities Lat/Lon
   function findLatLon() {
@@ -47,25 +55,18 @@ function processInputs(event) {
         var lon = data[0].lon;
         var state = data[0].state;
 
-        var queryObject = {
-          lat: lat,
-          lon: lon,
-          state: state,
-          city: city,
-          query: query,
-          food: food,
-          //   rating: rating,
-          //   comment: comment,
-        };
+        queryObject.lat = lat;
+        queryObject.lon = lon;
+        queryObject.state = state;
 
-        searchFoursquare(queryObject);
+        searchFoursquare();
       });
   }
 
-  function searchFoursquare(queryObject) {
+  function searchFoursquare() {
     var requestUrl =
       "https://api.foursquare.com/v3/places/search?query=" +
-      queryObject.query +
+      queryObject.restaurantQuery +
       "&ll=" +
       queryObject.lat +
       "%2C" +
@@ -88,13 +89,12 @@ function processInputs(event) {
         queryObject.fsq_id = data.results[0].fsq_id;
         queryObject.restaurant = data.results[0].name;
         queryObject.address = data.results[0].location.address;
+        searchNutrition();
       });
-
-    searchNutrition(queryObject);
   }
 
   // Search the Nutrition for the food item on Spoonacular
-  function searchNutrition(queryObject) {
+  function searchNutrition() {
     var options = {
       method: "GET",
       headers: {
@@ -103,10 +103,10 @@ function processInputs(event) {
         "x-rapidapi-key": "12387f33b5mshfdb8fc19ce32286p1e7d1djsn78329e4b2167",
       },
     };
-    var food = queryObject.food;
+
     fetch(
       "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/guessNutrition?title=" +
-        food,
+        queryObject.food,
       options
     )
       .then(function (response) {
@@ -115,11 +115,10 @@ function processInputs(event) {
       .then(function (data) {
         console.log(data);
         queryObject.calories = data.calories.value;
+        saveArray.push(queryObject);
+        localStorage.setItem("userLogs", JSON.stringify(saveArray));
+        displayLog(queryObject);
       });
-
-    saveArray.push(queryObject);
-    localStorage.setItem("userLogs", JSON.stringify(saveArray));
-    displayLog(queryObject);
   }
 }
 
