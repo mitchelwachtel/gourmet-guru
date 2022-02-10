@@ -4,6 +4,9 @@ $(document).ready(function () {
 
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
+var inputFood = document.getElementById("inputFood");
+var inputRating = document.getElementById("inputRating");
+var inputComment = document.getElementById("inputComment");
 var searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener("click", processInputs);
@@ -16,13 +19,14 @@ function processInputs(event) {
   var city = inputCity.value;
   var query = inputRestaurant.value;
   var food = inputFood.value;
+  //   var rating = inputRating.value;
+  //   var comment = inputRating.value;
   var saveArray = [];
 
   findLatLon(city, food);
-  
 
   // Use url created to search for the cities Lat/Lon
-  function findLatLon(city, food) {
+  function findLatLon() {
     var APIkey = "82d5daf2ee6f522b1b5e4b3cf21b2f07";
     var limit = 1;
 
@@ -50,9 +54,10 @@ function processInputs(event) {
           city: city,
           query: query,
           food: food,
+          //   rating: rating,
+          //   comment: comment,
         };
 
-        
         searchFoursquare(queryObject);
       });
   }
@@ -111,7 +116,7 @@ function processInputs(event) {
         console.log(data);
         queryObject.calories = data.calories.value;
       });
-    
+
     saveArray.push(queryObject);
     localStorage.setItem("userLogs", JSON.stringify(saveArray));
     displayLog(queryObject);
@@ -119,5 +124,16 @@ function processInputs(event) {
 }
 
 function displayLog(queryObject) {
-    console.log(queryObject);
+  console.log(queryObject);
+}
+
+function useStorage() {
+  if (localStorage.getItem("userLogs") !== null) {
+    var y = localStorage.getItem("userLogs");
+    saveArray = JSON.parse(y);
+
+    for (i = 0; i < saveArray.length; i++) {
+      displayLog(saveArray[i]);
+    }
+  }
 }
