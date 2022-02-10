@@ -1,18 +1,40 @@
+$(document).ready(function () {
+  $(".header").height($(window).height());
+});
+
+var inputRestaurant = document.getElementById("inputRestaurant");
+var inputCity = document.getElementById("inputCity");
+var inputFood = document.getElementById("inputFood");
+var inputRating = document.getElementById("inputRating");
+var inputComment = document.getElementById("inputComment");
+var searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", processInputs);
+
 function processInputs(event) {
   event.preventDefault();
   event.stopPropagation();
 
   // Grab the City and Query
   var city = inputCity.value;
-  var query = inputRestaurant.value;
+  var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
+  //   var rating = inputRating.value;
+  //   var comment = inputRating.value;
   var saveArray = [];
 
-  findLatLon(city, food);
-  searchNutrition(food);
+  var queryObject = {
+    city: city,
+    restaurantQuery: restaurantQuery,
+    food: food,
+    //   rating: rating,
+    //   comment: comment,
+  };
+
+  findLatLon();
 
   // Use url created to search for the cities Lat/Lon
-  function findLatLon(city, food) {
+  function findLatLon() {
     var APIkey = "82d5daf2ee6f522b1b5e4b3cf21b2f07";
     var limit = 1;
 
@@ -33,29 +55,22 @@ function processInputs(event) {
         var lon = data[0].lon;
         var state = data[0].state;
 
-        var object = {
-          lat: lat,
-          lon: lon,
-          state: state,
-          city: city,
-          query: query,
-          food: food,
-        };
+        queryObject.lat = lat;
+        queryObject.lon = lon;
+        queryObject.state = state;
 
-        saveArray.push(object);
-        localStorage.setItem("searches", JSON.stringify(saveArray));
-        searchFoursquare(query, city, state, lat, lon);
+        searchFoursquare();
       });
   }
 
-  function searchFoursquare(query, city, state, lat, lon) {
+  function searchFoursquare() {
     var requestUrl =
       "https://api.foursquare.com/v3/places/search?query=" +
-      query +
+      queryObject.restaurantQuery +
       "&ll=" +
-      lat +
+      queryObject.lat +
       "%2C" +
-      lon;
+      queryObject.lon;
 
     var options = {
       method: "GET",
@@ -70,14 +85,16 @@ function processInputs(event) {
         return response.json();
       })
       .then(function (data) {
-        console.log(city);
-        console.log(state);
         console.log(data);
+        queryObject.fsq_id = data.results[0].fsq_id;
+        queryObject.restaurant = data.results[0].name;
+        queryObject.address = data.results[0].location.address;
+        searchNutrition();
       });
   }
 
   // Search the Nutrition for the food item on Spoonacular
-  function searchNutrition(food) {
+  function searchNutrition() {
     var options = {
       method: "GET",
       headers: {
@@ -89,7 +106,7 @@ function processInputs(event) {
 
     fetch(
       "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/guessNutrition?title=" +
-        food,
+        queryObject.food,
       options
     )
       .then(function (response) {
@@ -97,16 +114,25 @@ function processInputs(event) {
       })
       .then(function (data) {
         console.log(data);
+        queryObject.calories = data.calories.value;
+        saveArray.push(queryObject);
+        localStorage.setItem("userLogs", JSON.stringify(saveArray));
+        displayLog(queryObject);
       });
   }
 }
 
-$(document).ready(function () {
-  $(".header").height($(window).height());
-});
+function displayLog(queryObject) {
+  console.log(queryObject);
+}
 
-var inputRestaurant = document.getElementById("inputRestaurant");
-var inputCity = document.getElementById("inputCity");
-var searchBtn = document.getElementById("searchBtn");
+function useStorage() {
+  if (localStorage.getItem("userLogs") !== null) {
+    var y = localStorage.getItem("userLogs");
+    saveArray = JSON.parse(y);
 
-searchBtn.addEventListener("click", processInputs);
+    for (i = 0; i < saveArray.length; i++) {
+      displayLog(saveArray[i]);
+    }
+  }
+}
