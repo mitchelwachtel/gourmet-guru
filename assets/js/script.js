@@ -1,3 +1,13 @@
+$(document).ready(function () {
+  $(".header").height($(window).height());
+});
+
+var inputRestaurant = document.getElementById("inputRestaurant");
+var inputCity = document.getElementById("inputCity");
+var searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", processInputs);
+
 function processInputs(event) {
   event.preventDefault();
   event.stopPropagation();
@@ -9,7 +19,7 @@ function processInputs(event) {
   var saveArray = [];
 
   findLatLon(city, food);
-  searchNutrition(food);
+  
 
   // Use url created to search for the cities Lat/Lon
   function findLatLon(city, food) {
@@ -33,7 +43,7 @@ function processInputs(event) {
         var lon = data[0].lon;
         var state = data[0].state;
 
-        var object = {
+        var queryObject = {
           lat: lat,
           lon: lon,
           state: state,
@@ -42,20 +52,19 @@ function processInputs(event) {
           food: food,
         };
 
-        saveArray.push(object);
-        localStorage.setItem("searches", JSON.stringify(saveArray));
-        searchFoursquare(query, city, state, lat, lon);
+        
+        searchFoursquare(queryObject);
       });
   }
 
-  function searchFoursquare(query, city, state, lat, lon) {
+  function searchFoursquare(queryObject) {
     var requestUrl =
       "https://api.foursquare.com/v3/places/search?query=" +
-      query +
+      queryObject.query +
       "&ll=" +
-      lat +
+      queryObject.lat +
       "%2C" +
-      lon;
+      queryObject.lon;
 
     var options = {
       method: "GET",
@@ -70,14 +79,17 @@ function processInputs(event) {
         return response.json();
       })
       .then(function (data) {
-        console.log(city);
-        console.log(state);
         console.log(data);
+        queryObject.fsq_id = data.results[0].fsq_id;
+        queryObject.restaurant = data.results[0].name;
+        queryObject.address = data.results[0].location.address;
       });
+
+    searchNutrition(queryObject);
   }
 
   // Search the Nutrition for the food item on Spoonacular
-  function searchNutrition(food) {
+  function searchNutrition(queryObject) {
     var options = {
       method: "GET",
       headers: {
@@ -86,7 +98,7 @@ function processInputs(event) {
         "x-rapidapi-key": "12387f33b5mshfdb8fc19ce32286p1e7d1djsn78329e4b2167",
       },
     };
-
+    var food = queryObject.food;
     fetch(
       "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/guessNutrition?title=" +
         food,
@@ -97,16 +109,15 @@ function processInputs(event) {
       })
       .then(function (data) {
         console.log(data);
+        queryObject.calories = data.calories.value;
       });
+    
+    saveArray.push(queryObject);
+    localStorage.setItem("userLogs", JSON.stringify(saveArray));
+    displayLog(queryObject);
   }
 }
 
-$(document).ready(function () {
-  $(".header").height($(window).height());
-});
-
-var inputRestaurant = document.getElementById("inputRestaurant");
-var inputCity = document.getElementById("inputCity");
-var searchBtn = document.getElementById("searchBtn");
-
-searchBtn.addEventListener("click", processInputs);
+function displayLog(queryObject) {
+    console.log(queryObject);
+}
