@@ -8,6 +8,7 @@ var inputFood = document.getElementById("inputFood");
 var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
 var searchBtn = document.getElementById("searchBtn");
+var saveArray = [];
 
 searchBtn.addEventListener("click", processInputs);
 
@@ -21,12 +22,13 @@ function processInputs(event) {
   var food = inputFood.value;
   //   var rating = inputRating.value;
   //   var comment = inputRating.value;
-  var saveArray = [];
+  
 
   var queryObject = {
     city: city,
     restaurantQuery: restaurantQuery,
     food: food,
+    date: moment().format('MMMM Do YYYY'),
     //   rating: rating,
     //   comment: comment,
   };
@@ -130,6 +132,7 @@ function useStorage() {
   if (localStorage.getItem("userLogs") !== null) {
     var y = localStorage.getItem("userLogs");
     saveArray = JSON.parse(y);
+    console.log(saveArray);
 
     for (i = 0; i < saveArray.length; i++) {
       displayLog(saveArray[i]);
