@@ -125,7 +125,13 @@ function processInputs(event) {
 }
 
 function displayLog(queryObject) {
-  console.log(queryObject);
+//   Create card and append it to div
+    console.log(queryObject);
+    
+    var logDiv = $("<div></div>");
+    logDiv.addClass("logDiv");
+    logDiv.addClass("card");
+    
 }
 
 function useStorage() {
