@@ -67,21 +67,32 @@
         <!-- Input form -->
             <div class="col-lg-6 col-md-6 col-sm-6 pr-0">
                 <h5 class="text-white text-center font-italic">Please provide search details:</h5>
-                <form class="mx-auto pt-3" style="width: 300px;">
-                    <div class="form-group">
-                      <input type="text" id="inputRestaurant" class="search form-control" name="search" placeholder="Restaurant">
+                <form class="mx-auto pt-3 needs-validation" style="width: 300px;" novalidate>
+                    <div class="form-group has-validation">
+                      <input required type="text" id="inputRestaurant" class="search form-control" name="search" placeholder="Restaurant">
+                      <div class="invalid-feedback">
+                        Please provide a valid Restaurant.
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <input type="text" id="inputCity" class="search form-control" name="search" placeholder="City">
+                    <div class="form-group has-validation">
+                      <input required type="text" id="inputCity" class="search form-control" name="search" placeholder="City">
+                      <div class="invalid-feedback">
+                        Please provide a valid City.
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <input type="text" id="inputFood" class="search form-control" name="search" placeholder="Food">
+                    <div class="form-group has-validation">
+                      <input required type="text" id="inputFood" class="search form-control" name="search" placeholder="Food">
+                      <div class="invalid-feedback">
+                        Please provide a valid Food.
+                      </div>
                     </div>
                     <!-- <button class="btn btn-primary btn-lg text-center" id="searchBtn">Search</button> -->
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-lg text-center font-weight-bold font-italic custom-btn" id="searchBtn" data-toggle="modal" data-target="#exampleModal">
                       Search
                     </button>
+                    <span class="error-message error-hide">Invalid Search</span>
+
                 </form>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">

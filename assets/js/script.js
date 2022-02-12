@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $(".header").height($(window).height());
 });
-
+var form =document.querySelector('.needs-validation')
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
@@ -13,8 +13,11 @@ $("#searchBtn").on("click", processInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 
 function processInputs(event) {
-  event.preventDefault();
-  event.stopPropagation();
+  if(!form.checkValidity ()){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  form.classList.add('was-validated');
 
   // Grab the City and Query
   var city = inputCity.value;
