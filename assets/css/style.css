@@ -1,23 +1,16 @@
-.navbar {
-    background:#E3E7F1;
+/* CSS variables */
+:root {
+    --lightOrange: #FFAF1C;
 }
 
-.nav-link,
-.navbar-brand {
-    color: black;
-    cursor: pointer;
+/* Elements */
+h1 {
+    font-family: 'Dancing Script', cursive;
 }
 
-.nav-link:hover {
-    color: #000;
-}
-
-.navbar-collapse {
-    justify-content: flex-end;
-}
-
+/* Classes */
 .header {
-    background-image: url('../images/main_page_food.jpg');
+    background-image: url('../images/main_page_image.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -29,5 +22,35 @@
     min-width: 100%;
     left: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.header-desc {
+    position: absolute;
+    z-index: 2;
+    left: 52%;
+    top: 35%;
+    transform: translate(-50%, -55%);
+}
+
+.p-desc {
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.custom-btn {
+    background-color: var(--lightOrange);
+    font-weight: bold;
+    font-style: italic;
+    /* background-color:#a03e2c; */
+}
+
+.search-info {
+    background-color: black;
+}
+
+.carousel-img{
+    height:400px;
+    object-fit:cover;
+    border-radius:2%;
 }
