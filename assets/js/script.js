@@ -7,10 +7,10 @@ var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
 var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
-var searchBtn = document.getElementById("searchBtn");
 var saveArray = [];
 
-searchBtn.addEventListener("click", processInputs);
+$("#searchBtn").on("click", processInputs);
+$("#card-reviews").on("click", ".delete-button", deleteLog);
 
 function processInputs(event) {
   event.preventDefault();
@@ -20,16 +20,24 @@ function processInputs(event) {
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
-  var rating = inputRating.value;
-  var comment = inputRating.value;
+//   var rating = inputRating.value;
+//   var comment = inputRating.value;
 
   var queryObject = {
     city: city,
     restaurantQuery: restaurantQuery,
     food: food,
     date: moment().format("MMMM Do YYYY"),
-    rating: rating,
-    comment: comment,
+    uniqueId:
+      moment().format("MM") +
+      moment().format("DD") +
+      moment().format("Y") +
+      moment().format("h") +
+      moment().format("m") +
+      moment().format("s") +
+      moment().format("a"),
+    // rating: rating,
+    // comment: comment,
   };
 
   findLatLon();
@@ -130,6 +138,7 @@ function displayLog(queryObject) {
   var logDiv = $("<div></div>");
   logDiv.addClass("logDiv");
   logDiv.addClass("card");
+  logDiv.attr("data-unique", queryObject.uniqueId);
 
   var a = $("<h3>" + queryObject.restaurant + "</h3>");
   a.addClass("restaurant");
@@ -153,13 +162,17 @@ function displayLog(queryObject) {
   e.addClass("food");
   logDiv.append(e);
 
-  var f = $("<p>" + queryObject.rating + "</p>");
-  f.addClass("rating");
-  logDiv.append(f);
+//   var f = $("<p>" + queryObject.rating + "</p>");
+//   f.addClass("rating");
+//   logDiv.append(f);
 
-  var g = $("<p>" + queryObject.comment + "</p>");
-  g.addClass("comment");
-  logDiv.append(g);
+//   var g = $("<p>" + queryObject.comment + "</p>");
+//   g.addClass("comment");
+//   logDiv.append(g);
+
+  var h = $("<button>Delete</button>");
+  h.addClass("delete-button");
+  logDiv.append(h);
 
   $("#card-reviews").prepend(logDiv);
 }
@@ -173,6 +186,27 @@ function useStorage() {
 
     for (i = 0; i < saveArray.length; i++) {
       displayLog(saveArray[i]);
+    }
+  }
+}
+
+function deleteLog(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  var y = localStorage.getItem("userLogs");
+  saveArray = JSON.parse(y);
+
+  var uniqueVal = $(this).closest(".logDiv").data().unique;
+
+
+//   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
+
+  for (i = 0; i < saveArray.length; i++) {
+    if (saveArray[i].uniqueId == uniqueVal) {
+      saveArray.splice(i, 1);
+      localStorage.setItem("userLogs", JSON.stringify(saveArray));
+      location.reload();
     }
   }
 }
