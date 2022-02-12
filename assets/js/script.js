@@ -20,17 +20,16 @@ function processInputs(event) {
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
-  //   var rating = inputRating.value;
-  //   var comment = inputRating.value;
-  
+  var rating = inputRating.value;
+  var comment = inputRating.value;
 
   var queryObject = {
     city: city,
     restaurantQuery: restaurantQuery,
     food: food,
-    date: moment().format('MMMM Do YYYY'),
-    //   rating: rating,
-    //   comment: comment,
+    date: moment().format("MMMM Do YYYY"),
+    rating: rating,
+    comment: comment,
   };
 
   findLatLon();
@@ -125,9 +124,47 @@ function processInputs(event) {
 }
 
 function displayLog(queryObject) {
+  //   Create card and append it to div
   console.log(queryObject);
+
+  var logDiv = $("<div></div>");
+  logDiv.addClass("logDiv");
+  logDiv.addClass("card");
+
+  var a = $("<h3>" + queryObject.restaurant + "</h3>");
+  a.addClass("restaurant");
+  logDiv.append(a);
+
+  var b = $("<p>" + queryObject.date + "</p>");
+  b.addClass("date");
+  logDiv.append(b);
+
+  var c = $("<p>" + queryObject.city + ", " + queryObject.state + "</p>");
+  c.addClass("city-state");
+  logDiv.append(c);
+
+  var d = $("<p>" + queryObject.address + "</p>");
+  d.addClass("address");
+  logDiv.append(d);
+
+  var e = $(
+    "<p>" + queryObject.food + " Calories: " + queryObject.calories + "</p>"
+  );
+  e.addClass("food");
+  logDiv.append(e);
+
+  var f = $("<p>" + queryObject.rating + "</p>");
+  f.addClass("rating");
+  logDiv.append(f);
+
+  var g = $("<p>" + queryObject.comment + "</p>");
+  g.addClass("comment");
+  logDiv.append(g);
+
+  $("#card-reviews").prepend(logDiv);
 }
 
+// Called every time the page is loaded
 function useStorage() {
   if (localStorage.getItem("userLogs") !== null) {
     var y = localStorage.getItem("userLogs");
