@@ -7,10 +7,9 @@ var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
 var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
-var searchBtn = document.getElementById("searchBtn");
 var saveArray = [];
 
-searchBtn.addEventListener("click", processInputs);
+$("#searchBtn").on("click", processInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 
 function processInputs(event) {
@@ -21,8 +20,8 @@ function processInputs(event) {
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
-    var rating = inputRating.value;
-    var comment = inputRating.value;
+//   var rating = inputRating.value;
+//   var comment = inputRating.value;
 
   var queryObject = {
     city: city,
@@ -35,9 +34,10 @@ function processInputs(event) {
       moment().format("Y") +
       moment().format("h") +
       moment().format("m") +
+      moment().format("s") +
       moment().format("a"),
-    rating: rating,
-    comment: comment,
+    // rating: rating,
+    // comment: comment,
   };
 
   findLatLon();
@@ -162,13 +162,13 @@ function displayLog(queryObject) {
   e.addClass("food");
   logDiv.append(e);
 
-    var f = $("<p>" + queryObject.rating + "</p>");
-    f.addClass("rating");
-    logDiv.append(f);
+//   var f = $("<p>" + queryObject.rating + "</p>");
+//   f.addClass("rating");
+//   logDiv.append(f);
 
-    var g = $("<p>" + queryObject.comment + "</p>");
-    g.addClass("comment");
-    logDiv.append(g);
+//   var g = $("<p>" + queryObject.comment + "</p>");
+//   g.addClass("comment");
+//   logDiv.append(g);
 
   var h = $("<button>Delete</button>");
   h.addClass("delete-button");
@@ -198,6 +198,9 @@ function deleteLog(event) {
   saveArray = JSON.parse(y);
 
   var uniqueVal = $(this).closest(".logDiv").data().unique;
+
+
+//   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
 
   for (i = 0; i < saveArray.length; i++) {
     if (saveArray[i].uniqueId == uniqueVal) {
