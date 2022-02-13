@@ -77,6 +77,17 @@
                     <div class="form-group">
                       <input type="text" id="inputFood" class="search form-control" name="search" placeholder="Food">
                     </div>
+                    <div class="rating">
+                      <h5 class="font-italic">My Rating: </h5>
+                      <i class="rating__star far fa-star"></i>
+                      <i class="rating__star far fa-star"></i>
+                      <i class="rating__star far fa-star"></i>
+                      <i class="rating__star far fa-star"></i>
+                      <i class="rating__star far fa-star"></i>
+                    </div>
+                    <div class="form-group">
+                      <textarea type="text" id="inputComment" class="search form-control comment-input" name="search" placeholder="My Comments"></textarea>
+                    </div>
                     <!-- <button class="btn btn-primary btn-lg text-center" id="searchBtn">Search</button> -->
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-lg text-center font-weight-bold font-italic custom-btn" id="searchBtn" data-toggle="modal" data-target="#exampleModal">
@@ -100,12 +111,11 @@
                 </div>
             </div>
       </div>
-
     </main>
-
+    
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -125,7 +135,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Card Display -->
     <div id="card-reviews"></div>
@@ -143,6 +153,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script src="https://kit.fontawesome.com/33d1c7835e.js" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

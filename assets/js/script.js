@@ -5,23 +5,58 @@ $(document).ready(function () {
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
-var inputRating = document.getElementById("inputRating");
+// var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
 var searchBtn = document.getElementById("searchBtn");
 var saveArray = [];
 
+var starCount;
+var i;
+
 searchBtn.addEventListener("click", processInputs);
+
+const ratingStars = [...document.getElementsByClassName("rating__star")];
+executeRating(ratingStars)
+function executeRating(stars) {
+  const starClassActive = "rating__star fas fa-star";
+  const starClassInactive = "rating__star far fa-star";
+  const starsLength = stars.length;
+  let i;
+  stars.map((star) => {
+    star.onclick = () => {
+      i = stars.indexOf(star);
+
+      if (starCount === 'undefined') {
+      starCount = 'No Rating'
+      } else {
+        starCount= i + 1;
+      };
+      console.log(starCount);
+
+      if (star.className === starClassInactive) {
+        for (i; i >= 0; --i) stars[i].className = starClassActive;
+      } else {
+        for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+      }
+    };
+  });
+}
+
 
 function processInputs(event) {
   event.preventDefault();
   event.stopPropagation();
-
+  
+  if (starCount === undefined) {
+    starCount = 'No Rating'
+    };
+ 
   // Grab the City and Query
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
-  var rating = inputRating.value;
-  var comment = inputRating.value;
+  var rating = starCount;
+  var comment = inputComment.value;
 
   var queryObject = {
     city: city,
@@ -176,3 +211,5 @@ function useStorage() {
     }
   }
 }
+
+
