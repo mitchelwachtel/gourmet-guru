@@ -12,7 +12,7 @@ var saveArray = [];
 var starCount;
 var i;
 
-searchBtn.addEventListener("click", processInputs);
+// searchBtn.addEventListener("click", processInputs);
 $("#searchBtn").on("click", processInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 
