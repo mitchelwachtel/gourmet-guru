@@ -7,13 +7,14 @@ var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
 // var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
-var searchBtn = document.getElementById("searchBtn");
 var saveArray = [];
 
 var starCount;
 var i;
 
 searchBtn.addEventListener("click", processInputs);
+$("#searchBtn").on("click", processInputs);
+$("#card-reviews").on("click", ".delete-button", deleteLog);
 
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 executeRating(ratingStars)
@@ -63,6 +64,14 @@ function processInputs(event) {
     restaurantQuery: restaurantQuery,
     food: food,
     date: moment().format("MMMM Do YYYY"),
+    uniqueId:
+      moment().format("MM") +
+      moment().format("DD") +
+      moment().format("Y") +
+      moment().format("h") +
+      moment().format("m") +
+      moment().format("s") +
+      moment().format("a"),
     rating: rating,
     comment: comment,
   };
@@ -165,6 +174,7 @@ function displayLog(queryObject) {
   var logDiv = $("<div></div>");
   logDiv.addClass("logDiv");
   logDiv.addClass("card");
+  logDiv.attr("data-unique", queryObject.uniqueId);
 
   var a = $("<h3>" + queryObject.restaurant + "</h3>");
   a.addClass("restaurant");
@@ -196,6 +206,10 @@ function displayLog(queryObject) {
   g.addClass("comment");
   logDiv.append(g);
 
+  var h = $("<button>Delete</button>");
+  h.addClass("delete-button");
+  logDiv.append(h);
+
   $("#card-reviews").prepend(logDiv);
 }
 
@@ -213,3 +227,23 @@ function useStorage() {
 }
 
 
+function deleteLog(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  var y = localStorage.getItem("userLogs");
+  saveArray = JSON.parse(y);
+
+  var uniqueVal = $(this).closest(".logDiv").data().unique;
+
+
+//   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
+
+  for (i = 0; i < saveArray.length; i++) {
+    if (saveArray[i].uniqueId == uniqueVal) {
+      saveArray.splice(i, 1);
+      localStorage.setItem("userLogs", JSON.stringify(saveArray));
+      location.reload();
+    }
+  }
+}
