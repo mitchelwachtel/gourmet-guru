@@ -72,7 +72,7 @@ function processInputs(event) {
       moment().format("m") +
       moment().format("s") +
       moment().format("a"),
-    rating: rating,
+    rating: rating + " Star Rating",
     comment: comment,
   };
 
