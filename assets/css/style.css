@@ -54,3 +54,27 @@ h1 {
     object-fit:cover;
     border-radius:2%;
 }
+
+.comment-input {
+    height: 20px;
+
+}
+/* rating css */
+.rating {
+    /* width: 180px; */
+    height: 37px;
+    background-color: black;
+    display: flex;
+    color: white;
+    align-items: baseline;
+  }
+  
+  .rating__star {
+    cursor: pointer;
+    color: var(--lightOrange);
+  }
+
+  h5 {
+    padding-right: 25px;
+  }
+  

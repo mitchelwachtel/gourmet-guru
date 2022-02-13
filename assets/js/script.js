@@ -5,23 +5,59 @@ $(document).ready(function () {
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
-var inputRating = document.getElementById("inputRating");
+// var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
 var saveArray = [];
 
+var starCount;
+var i;
+
+// searchBtn.addEventListener("click", processInputs);
 $("#searchBtn").on("click", processInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
+
+const ratingStars = [...document.getElementsByClassName("rating__star")];
+executeRating(ratingStars)
+function executeRating(stars) {
+  const starClassActive = "rating__star fas fa-star";
+  const starClassInactive = "rating__star far fa-star";
+  const starsLength = stars.length;
+  let i;
+  stars.map((star) => {
+    star.onclick = () => {
+      i = stars.indexOf(star);
+
+      if (starCount === 'undefined') {
+      starCount = 'No Rating'
+      } else {
+        starCount= i + 1;
+      };
+      console.log(starCount);
+
+      if (star.className === starClassInactive) {
+        for (i; i >= 0; --i) stars[i].className = starClassActive;
+      } else {
+        for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+      }
+    };
+  });
+}
+
 
 function processInputs(event) {
   event.preventDefault();
   event.stopPropagation();
-
+  
+  if (starCount === undefined) {
+    starCount = 'No Rating'
+    };
+ 
   // Grab the City and Query
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
-//   var rating = inputRating.value;
-//   var comment = inputRating.value;
+  var rating = starCount;
+  var comment = inputComment.value;
 
   var queryObject = {
     city: city,
@@ -36,8 +72,8 @@ function processInputs(event) {
       moment().format("m") +
       moment().format("s") +
       moment().format("a"),
-    // rating: rating,
-    // comment: comment,
+    rating: rating + " Star Rating",
+    comment: comment,
   };
 
   findLatLon();
@@ -162,13 +198,13 @@ function displayLog(queryObject) {
   e.addClass("food");
   logDiv.append(e);
 
-//   var f = $("<p>" + queryObject.rating + "</p>");
-//   f.addClass("rating");
-//   logDiv.append(f);
+  var f = $("<p>" + queryObject.rating + "</p>");
+  f.addClass("rating");
+  logDiv.append(f);
 
-//   var g = $("<p>" + queryObject.comment + "</p>");
-//   g.addClass("comment");
-//   logDiv.append(g);
+  var g = $("<p>" + queryObject.comment + "</p>");
+  g.addClass("comment");
+  logDiv.append(g);
 
   var h = $("<button>Delete</button>");
   h.addClass("delete-button");
@@ -189,6 +225,7 @@ function useStorage() {
     }
   }
 }
+
 
 function deleteLog(event) {
   event.preventDefault();
