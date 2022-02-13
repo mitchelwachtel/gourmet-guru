@@ -54,7 +54,8 @@ img {
 }
 
 .log-reviews {
-    background-color:#C76B57;
+    /* background-color:#C76B57; */
+    background-color:#A82810;
     opacity: 0.8;
 }
 
@@ -90,18 +91,17 @@ img {
     background: rgba(0, 0, 0, 0.3);
 }
 
-<<<<<<< HEAD
-.logiDiv--blur {
+/* .logiDiv--blur {
     transition: transform 1s, filter 2s ease-in-out;
     filter: blur(2px);
     transform: scale(1.2);
   }
   
   /* The Transformation */
-  .logiDiv--blur:hover{
+  /* .logiDiv--blur:hover{
     filter: blur(0);
     transform: scale(1);
-  }
+  } */
 
 /* .card-column {
     overflow:hidden;
@@ -137,7 +137,6 @@ img {
 #card-reviews {
     width:100%;
 }
-=======
 .comment-input {
     height: 20px;
 
@@ -146,9 +145,9 @@ img {
 .rating {
     /* width: 180px; */
     height: 37px;
-    background-color: black;
+    /* background-color: black; */
     display: flex;
-    color: white;
+    /* color: white; */
     align-items: baseline;
   }
   
@@ -161,4 +160,3 @@ img {
     padding-right: 25px;
   }
   
->>>>>>> main

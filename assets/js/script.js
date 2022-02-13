@@ -7,18 +7,16 @@ var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
 // var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
-<<<<<<< HEAD
-var searchBtn = document.getElementById("searchBtn");
-var selectPref = document.getElementById("inlineFormCustomSelectPref");
+// var searchBtn = document.getElementById("searchBtn");
+// var selectPref = document.getElementById("inlineFormCustomSelectPref");
 var logRevBtn = document.getElementById("logReviewBtn");
 var viewRevBtn = document.getElementById("viewRevBtn");
 var saveArray = [];
 
 logRevBtn.addEventListener("click", navigateToSection);
 viewRevBtn.addEventListener("click", navigateToSection);
-searchBtn.addEventListener("click", processInputs);
-=======
-var saveArray = [];
+// searchBtn.addEventListener("click", processInputs);
+// var saveArray = [];
 
 var starCount;
 var i;
@@ -54,10 +52,9 @@ function executeRating(stars) {
   });
 }
 
->>>>>>> main
 
 // Function to navigate to different sections of the page
-function navigateToSection(e) {
+function navigateToSection() {
   var btnclicked = $(this).attr('id');
     if(btnclicked === "logReviewBtn") {
       $('html, body').animate({
@@ -198,46 +195,66 @@ function displayLog(queryObject) {
   //   Create card and append it to div
   console.log(queryObject);
 
+  // Create columns to display cards - PD
+  var cardCols = $("<div></div>");
+  cardCols.addClass("col-lg-4 col-md-6 col-sm-1 pb-4 card-column");
+  // End - PD
+
   var logDiv = $("<div></div>");
   logDiv.addClass("logDiv");
-  logDiv.addClass("card");
+  logDiv.addClass("card p-3");
   logDiv.attr("data-unique", queryObject.uniqueId);
 
   var a = $("<h3>" + queryObject.restaurant + "</h3>");
-  a.addClass("restaurant");
+  a.addClass("restaurant card-header");
   logDiv.append(a);
 
+  // Create card header - PD
+  var cardBody = $("<div></div>");
+  cardBody.addClass("card-body");
+  logDiv.append(cardBody);
+  // End - PD
+
   var b = $("<p>" + queryObject.date + "</p>");
-  b.addClass("date");
-  logDiv.append(b);
+  b.addClass("date card-text");
+  cardBody.append(b);
+  // logDiv.append(b);
 
   var c = $("<p>" + queryObject.city + ", " + queryObject.state + "</p>");
-  c.addClass("city-state");
-  logDiv.append(c);
+  c.addClass("city-state card-text");
+  cardBody.append(c);
+  // logDiv.append(c);
 
   var d = $("<p>" + queryObject.address + "</p>");
-  d.addClass("address");
-  logDiv.append(d);
+  d.addClass("address card-text");
+  cardBody.append(d);
+  // logDiv.append(d);
 
   var e = $(
     "<p>" + queryObject.food + " Calories: " + queryObject.calories + "</p>"
   );
-  e.addClass("food");
-  logDiv.append(e);
+  e.addClass("food card-text");
+  cardBody.append(e);
+  // logDiv.append(e);
 
   var f = $("<p>" + queryObject.rating + "</p>");
-  f.addClass("rating");
-  logDiv.append(f);
+  f.addClass("rating card-text");
+  cardBody.append(f);
+  // logDiv.append(f);
 
   var g = $("<p>" + queryObject.comment + "</p>");
-  g.addClass("comment");
-  logDiv.append(g);
+  g.addClass("comment card-text");
+  cardBody.append(g);
+  // logDiv.append(g);
 
   var h = $("<button>Delete</button>");
-  h.addClass("delete-button");
-  logDiv.append(h);
+  h.addClass("delete-button btn custom-btn");
+  cardBody.append(h);
+  // logDiv.append(h);
 
-  $("#card-reviews").prepend(logDiv);
+  // $("#card-reviews").prepend(logDiv);
+  $("#card-reviews").append(cardCols);
+  cardCols.prepend(logDiv);
 }
 
 // Called every time the page is loaded
