@@ -8,9 +8,29 @@ var inputFood = document.getElementById("inputFood");
 var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
 var searchBtn = document.getElementById("searchBtn");
+var selectPref = document.getElementById("inlineFormCustomSelectPref");
+var logRevBtn = document.getElementById("logReviewBtn");
+var viewRevBtn = document.getElementById("viewRevBtn");
 var saveArray = [];
 
+logRevBtn.addEventListener("click", navigateToSection);
+viewRevBtn.addEventListener("click", navigateToSection);
 searchBtn.addEventListener("click", processInputs);
+
+// Function to navigate to different sections of the page
+function navigateToSection(e) {
+  var btnclicked = $(this).attr('id');
+    if(btnclicked === "logReviewBtn") {
+      $('html, body').animate({
+        scrollTop: $("#input-form").offset().top
+    }, 1500);
+    }
+    else {
+        $('html, body').animate({
+          scrollTop: $("#view-reviews").offset().top
+      }, 1500);
+    }
+}
 
 function processInputs(event) {
   event.preventDefault();

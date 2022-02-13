@@ -4,8 +4,17 @@
 }
 
 /* Elements */
-h1 {
+h1,
+h2 {
     font-family: 'Dancing Script', cursive;
+}
+
+img {
+    max-height: 400px;
+    max-width:250px;
+    /* padding-left: 15px; */
+    border: 5px solid var(--lightOrange);
+    border-radius: 2%;
 }
 
 /* Classes */
@@ -42,11 +51,35 @@ h1 {
     background-color: var(--lightOrange);
     font-weight: bold;
     font-style: italic;
-    /* background-color:#a03e2c; */
+}
+
+.log-reviews {
+    background-color:#C76B57;
+    opacity: 0.8;
+}
+
+.h-log-reviews {
+    font-size: 3rem;
+}
+
+.log-review-form {
+    max-width: 100%;
+    background-color:#B85128; 
+    width: 400px;
+    border-radius: 1%;
+    z-index: 2;
+    /* position: relative; */
 }
 
 .search-info {
-    background-color: black;
+    /* background-color: black; */
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* opacity: 0.8; */
+    /* border:1px solid; */
+    /* background: rgba(0, 0, 0, 0.3); */
 }
 
 .carousel-img{
@@ -54,3 +87,11 @@ h1 {
     object-fit:cover;
     border-radius:2%;
 }
+
+/* Ids */
+/* #input-form {
+    background-image: url('../images/foodPlatter.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+} */
