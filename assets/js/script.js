@@ -5,8 +5,9 @@ $(document).ready(function () {
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
-var inputRating = document.getElementById("inputRating");
+// var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
+<<<<<<< HEAD
 var searchBtn = document.getElementById("searchBtn");
 var selectPref = document.getElementById("inlineFormCustomSelectPref");
 var logRevBtn = document.getElementById("logReviewBtn");
@@ -16,6 +17,44 @@ var saveArray = [];
 logRevBtn.addEventListener("click", navigateToSection);
 viewRevBtn.addEventListener("click", navigateToSection);
 searchBtn.addEventListener("click", processInputs);
+=======
+var saveArray = [];
+
+var starCount;
+var i;
+
+// searchBtn.addEventListener("click", processInputs);
+$("#searchBtn").on("click", processInputs);
+$("#card-reviews").on("click", ".delete-button", deleteLog);
+
+const ratingStars = [...document.getElementsByClassName("rating__star")];
+executeRating(ratingStars)
+function executeRating(stars) {
+  const starClassActive = "rating__star fas fa-star";
+  const starClassInactive = "rating__star far fa-star";
+  const starsLength = stars.length;
+  let i;
+  stars.map((star) => {
+    star.onclick = () => {
+      i = stars.indexOf(star);
+
+      if (starCount === 'undefined') {
+      starCount = 'No Rating'
+      } else {
+        starCount= i + 1;
+      };
+      console.log(starCount);
+
+      if (star.className === starClassInactive) {
+        for (i; i >= 0; --i) stars[i].className = starClassActive;
+      } else {
+        for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+      }
+    };
+  });
+}
+
+>>>>>>> main
 
 // Function to navigate to different sections of the page
 function navigateToSection(e) {
@@ -35,20 +74,32 @@ function navigateToSection(e) {
 function processInputs(event) {
   event.preventDefault();
   event.stopPropagation();
-
+  
+  if (starCount === undefined) {
+    starCount = 'No Rating'
+    };
+ 
   // Grab the City and Query
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
   var food = inputFood.value;
-  var rating = inputRating.value;
-  var comment = inputRating.value;
+  var rating = starCount;
+  var comment = inputComment.value;
 
   var queryObject = {
     city: city,
     restaurantQuery: restaurantQuery,
     food: food,
     date: moment().format("MMMM Do YYYY"),
-    rating: rating,
+    uniqueId:
+      moment().format("MM") +
+      moment().format("DD") +
+      moment().format("Y") +
+      moment().format("h") +
+      moment().format("m") +
+      moment().format("s") +
+      moment().format("a"),
+    rating: rating + " Star Rating",
     comment: comment,
   };
 
@@ -150,6 +201,7 @@ function displayLog(queryObject) {
   var logDiv = $("<div></div>");
   logDiv.addClass("logDiv");
   logDiv.addClass("card");
+  logDiv.attr("data-unique", queryObject.uniqueId);
 
   var a = $("<h3>" + queryObject.restaurant + "</h3>");
   a.addClass("restaurant");
@@ -181,6 +233,10 @@ function displayLog(queryObject) {
   g.addClass("comment");
   logDiv.append(g);
 
+  var h = $("<button>Delete</button>");
+  h.addClass("delete-button");
+  logDiv.append(h);
+
   $("#card-reviews").prepend(logDiv);
 }
 
@@ -193,6 +249,28 @@ function useStorage() {
 
     for (i = 0; i < saveArray.length; i++) {
       displayLog(saveArray[i]);
+    }
+  }
+}
+
+
+function deleteLog(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  var y = localStorage.getItem("userLogs");
+  saveArray = JSON.parse(y);
+
+  var uniqueVal = $(this).closest(".logDiv").data().unique;
+
+
+//   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
+
+  for (i = 0; i < saveArray.length; i++) {
+    if (saveArray[i].uniqueId == uniqueVal) {
+      saveArray.splice(i, 1);
+      localStorage.setItem("userLogs", JSON.stringify(saveArray));
+      location.reload();
     }
   }
 }

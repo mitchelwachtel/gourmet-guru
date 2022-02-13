@@ -90,6 +90,7 @@ img {
     background: rgba(0, 0, 0, 0.3);
 }
 
+<<<<<<< HEAD
 .logiDiv--blur {
     transition: transform 1s, filter 2s ease-in-out;
     filter: blur(2px);
@@ -136,3 +137,28 @@ img {
 #card-reviews {
     width:100%;
 }
+=======
+.comment-input {
+    height: 20px;
+
+}
+/* rating css */
+.rating {
+    /* width: 180px; */
+    height: 37px;
+    background-color: black;
+    display: flex;
+    color: white;
+    align-items: baseline;
+  }
+  
+  .rating__star {
+    cursor: pointer;
+    color: var(--lightOrange);
+  }
+
+  h5 {
+    padding-right: 25px;
+  }
+  
+>>>>>>> main
