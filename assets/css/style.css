@@ -72,7 +72,6 @@ img {
 }
 
 .search-info {
-    /* background-color: black; */
     background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
@@ -82,16 +81,58 @@ img {
     /* background: rgba(0, 0, 0, 0.3); */
 }
 
-.carousel-img{
-    height:400px;
-    object-fit:cover;
-    border-radius:2%;
+.overlay-reviews {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
 }
 
-/* Ids */
-/* #input-form {
+.logiDiv--blur {
+    transition: transform 1s, filter 2s ease-in-out;
+    filter: blur(2px);
+    transform: scale(1.2);
+  }
+  
+  /* The Transformation */
+  .logiDiv--blur:hover{
+    filter: blur(0);
+    transform: scale(1);
+  }
+
+/* .card-column {
+    overflow:hidden;
+} */
+
+.logDiv {
+    /* width:50%; */
+    border: 5px solid var(--lightOrange);
+    border-radius:5%;
+    /* transition: transform .5s ease; */
+}
+
+/* .logDiv:hover {
+        /* box-shadow: 0 8px 17px 0 rgb(207, 143, 22), 0 6px 20px 0 rgba(241, 203, 31, 0.952);
+        transition: all .55s ease-in-out; 
+        transform: scale(1.5);
+      } */
+
+
+.card-display {
     background-image: url('../images/foodPlatter.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
-} */
+}
+
+.card-header {
+    background-color: #DF362D;
+    color:white;
+}
+
+/* Id's */
+#card-reviews {
+    width:100%;
+}
