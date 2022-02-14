@@ -4,8 +4,17 @@
 }
 
 /* Elements */
-h1 {
+h1,
+h2 {
     font-family: 'Dancing Script', cursive;
+}
+
+img {
+    max-height: 400px;
+    max-width:250px;
+    /* padding-left: 15px; */
+    border: 5px solid var(--lightOrange);
+    border-radius: 2%;
 }
 
 /* Classes */
@@ -42,19 +51,92 @@ h1 {
     background-color: var(--lightOrange);
     font-weight: bold;
     font-style: italic;
-    /* background-color:#a03e2c; */
+}
+
+.log-reviews {
+    /* background-color:#C76B57; */
+    background-color:#A82810;
+    opacity: 0.8;
+}
+
+.h-log-reviews {
+    font-size: 3rem;
+}
+
+.log-review-form {
+    max-width: 100%;
+    background-color:#B85128; 
+    width: 400px;
+    border-radius: 1%;
+    z-index: 2;
+    /* position: relative; */
 }
 
 .search-info {
-    background-color: black;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* opacity: 0.8; */
+    /* border:1px solid; */
+    /* background: rgba(0, 0, 0, 0.3); */
 }
 
-.carousel-img{
-    height:400px;
-    object-fit:cover;
-    border-radius:2%;
+.overlay-reviews {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
 }
 
+/* .logiDiv--blur {
+    transition: transform 1s, filter 2s ease-in-out;
+    filter: blur(2px);
+    transform: scale(1.2);
+  }
+  
+  /* The Transformation */
+  /* .logiDiv--blur:hover{
+    filter: blur(0);
+    transform: scale(1);
+  } */
+
+/* .card-column {
+    overflow:hidden;
+} */
+
+.logDiv {
+    /* width:50%; */
+    border: 5px solid var(--lightOrange);
+    border-radius:5%;
+    /* transition: transform .5s ease; */
+}
+
+/* .logDiv:hover {
+        /* box-shadow: 0 8px 17px 0 rgb(207, 143, 22), 0 6px 20px 0 rgba(241, 203, 31, 0.952);
+        transition: all .55s ease-in-out; 
+        transform: scale(1.5);
+      } */
+
+
+.card-display {
+    background-image: url('../images/foodPlatter.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.card-header {
+    background-color: #DF362D;
+    color:white;
+}
+
+/* Id's */
+#card-reviews {
+    width:100%;
+}
 .comment-input {
     height: 20px;
 
@@ -64,9 +146,9 @@ h1 {
 .rating {
     /* width: 180px; */
     height: 37px;
-    background-color: black;
+    /* background-color: black; */
     display: flex;
-    color: white;
+    /* color: white; */
     align-items: baseline;
   }
   
