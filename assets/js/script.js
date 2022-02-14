@@ -2,6 +2,7 @@ $(document).ready(function () {
   $(".header").height($(window).height());
 });
 
+var form = document.querySelector(".needs-validation");
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
@@ -17,7 +18,7 @@ $("#searchBtn").on("click", processInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 
 const ratingStars = [...document.getElementsByClassName("rating__star")];
-executeRating(ratingStars)
+executeRating(ratingStars);
 function executeRating(stars) {
   const starClassActive = "rating__star fas fa-star";
   const starClassInactive = "rating__star far fa-star";
@@ -27,11 +28,11 @@ function executeRating(stars) {
     star.onclick = () => {
       i = stars.indexOf(star);
 
-      if (starCount === 'undefined') {
-      starCount = 'No Rating'
+      if (starCount === "undefined") {
+        starCount = "No Rating";
       } else {
-        starCount= i + 1;
-      };
+        starCount = i + 1;
+      }
       console.log(starCount);
 
       if (star.className === starClassInactive) {
@@ -43,15 +44,48 @@ function executeRating(stars) {
   });
 }
 
+(function () {
+  "use strict";
+  window.addEventListener(
+    "load",
+    function () {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName("needs-validation");
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    },
+    false
+  );
+})();
 
 function processInputs(event) {
   event.preventDefault();
   event.stopPropagation();
-  
+
+  Array.prototype.filter.call(forms, checkVal(form));
+
+  function checkVal(form) {
+      if (form.checkValidity()) {
+        form.classList.add('was-validated');
+      } 
+  }
+
   if (starCount === undefined) {
-    starCount = 'No Rating'
-    };
- 
+    starCount = "No Rating";
+  }
+
   // Grab the City and Query
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
@@ -226,7 +260,6 @@ function useStorage() {
   }
 }
 
-
 function deleteLog(event) {
   event.preventDefault();
   event.stopPropagation();
@@ -236,8 +269,7 @@ function deleteLog(event) {
 
   var uniqueVal = $(this).closest(".logDiv").data().unique;
 
-
-//   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
+  //   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
 
   for (i = 0; i < saveArray.length; i++) {
     if (saveArray[i].uniqueId == uniqueVal) {

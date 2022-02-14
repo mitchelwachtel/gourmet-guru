@@ -59,6 +59,7 @@ h1 {
     height: 20px;
 
 }
+
 /* rating css */
 .rating {
     /* width: 180px; */
@@ -78,3 +79,11 @@ h1 {
     padding-right: 25px;
   }
   
+  /* Form Validation */
+  .error-message{
+    color:red;
+    padding-left: 20px;
+} 
+.error-hide{
+    display:none;
+} 
