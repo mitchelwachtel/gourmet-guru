@@ -69,54 +69,44 @@
           <h5 class="text-white text-center font-italic">
             Please provide experience details:
           </h5>
-          <form
-            class="mx-auto pt-3 needs-validation"
-            style="width: 300px"
-            novalidate
-          >
-            <div class="form-group">
+          <form id="log-form" class="mx-auto pt-3" style="width: 300px">
+            <div class="form-control form-group" id="input-restaurant">
               <input
-                required
                 type="text"
                 id="inputRestaurant"
-                class="search form-control"
-                name="search"
+                class="search"
                 placeholder="Restaurant"
               />
-              <div class="invalid-feedback">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <div class="invalid">
                 Please provide a valid Restaurant.
               </div>
-              <div class="valid-feedback">
-                Lots of memories there!
-              </div>
+              <div class="acceptable">Lots of memories there!</div>
             </div>
-            <div class="form-group">
+            <div class="form-control form-group" id="input-city">
               <input
-                required
                 type="text"
                 id="inputCity"
-                class="search form-control"
-                name="search"
+                class="search"
                 placeholder="City"
               />
-              <div class="invalid-feedback">Please provide a valid City.</div>
-              <div class="valid-feedback">
-                Charming place!
-              </div>
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <div class="invalid">Please provide a valid City.</div>
+              <div class="acceptable">Charming place!</div>
             </div>
-            <div class="form-group">
+            <div class="form-control form-group" id="input-food">
               <input
-                required
                 type="text"
                 id="inputFood"
-                class="search form-control"
-                name="search"
+                class="search"
                 placeholder="Food"
               />
-              <div class="invalid-feedback">Please provide a valid Food.</div>
-              <div class="valid-feedback">
-                Sounds Tasty!
-              </div>
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <div class="invalid">Please provide a valid Food.</div>
+              <div class="acceptable">Sounds Tasty!</div>
             </div>
             <div class="rating">
               <h5 class="font-italic">My Rating:</h5>
@@ -131,7 +121,6 @@
                 type="text"
                 id="inputComment"
                 class="search form-control comment-input"
-                name="search"
                 placeholder="My Comments"
               ></textarea>
             </div>

@@ -2,7 +2,7 @@ $(document).ready(function () {
   $(".header").height($(window).height());
 });
 
-var form = document.querySelector(".needs-validation");
+// var form = document.querySelector(".needs-validation");
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
@@ -14,8 +14,47 @@ var starCount;
 var i;
 
 // searchBtn.addEventListener("click", processInputs);
-$("#searchBtn").on("click", processInputs);
+$("#searchBtn").on("click", validateInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
+// $('#log-form').on('submit', validateInputs);
+
+function validateInputs(event) {
+  event.preventDefault();
+
+  var city = inputCity.value.trim();
+  var food = inputFood.value.trim();
+  var restaurant = inputRestaurant.value.trim();
+
+  if (city == "") {
+    $("#input-city").removeClass("success");
+    $("#input-city").addClass("error");
+  } else {
+    $("#input-city").removeClass("error");
+    $("#input-city").addClass("success");
+  }
+
+  if (food == "") {
+    $("#input-food").removeClass("success");
+    $("#input-food").addClass("error");
+  } else {
+    $("#input-food").removeClass("error");
+    $("#input-food").addClass("success");
+  }
+
+  if (restaurant == "") {
+    $("#input-restaurant").removeClass("success");
+    $("#input-restaurant").addClass("error");
+  } else {
+    $("#input-restaurant").removeClass("error");
+    $("#input-restaurant").addClass("success");
+  }
+
+  if (city != "" && food != "" && restaurant != "") {
+    processInputs();
+  } else {
+    return;
+  }
+}
 
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 executeRating(ratingStars);
@@ -44,43 +83,16 @@ function executeRating(stars) {
   });
 }
 
-(function () {
-  "use strict";
-  window.addEventListener(
-    "load",
-    function () {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName("needs-validation");
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener(
-          "submit",
-          function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add("was-validated");
-          },
-          false
-        );
-      });
-    },
-    false
-  );
-})();
-
 function processInputs(event) {
-  event.preventDefault();
-  event.stopPropagation();
+  
 
-  Array.prototype.filter.call(forms, checkVal(form));
+  //   Array.prototype.filter.call(forms, checkVal(form));
 
-  function checkVal(form) {
-      if (form.checkValidity()) {
-        form.classList.add('was-validated');
-      } 
-  }
+  //   function checkVal(form) {
+  //       if (form.checkValidity()) {
+  //         form.classList.add('was-validated');
+  //       }
+  //   }
 
   if (starCount === undefined) {
     starCount = "No Rating";
