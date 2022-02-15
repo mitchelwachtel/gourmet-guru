@@ -109,15 +109,6 @@ function navigateToSection() {
 }
 
 function processInputs(event) {
-  
-
-  //   Array.prototype.filter.call(forms, checkVal(form));
-
-  //   function checkVal(form) {
-  //       if (form.checkValidity()) {
-  //         form.classList.add('was-validated');
-  //       }
-  //   }
 
   if (starCount === undefined) {
     starCount = "No Rating";
@@ -234,6 +225,7 @@ function processInputs(event) {
         saveArray.push(queryObject);
         localStorage.setItem("userLogs", JSON.stringify(saveArray));
         displayLog(queryObject);
+        clearForm();
       });
   }
 }
@@ -335,4 +327,17 @@ function deleteLog(event) {
       location.reload();
     }
   }
+}
+
+
+function clearForm() {
+    inputCity.value = null;
+    inputFood.value = null;
+    inputRestaurant.value = null;
+    inputComment.value = null;
+    $("#input-city").removeClass("success");
+    $("#input-food").removeClass("success");
+    $("#input-restaurant").removeClass("success");
+    $('#stars').children('i').removeClass('fas');
+    $('#stars').children('i').addClass('far');
 }
