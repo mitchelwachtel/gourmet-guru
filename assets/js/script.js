@@ -24,6 +24,7 @@ var i;
 
 // searchBtn.addEventListener("click", processInputs);
 $("#searchBtn").on("click", validateInputs);
+$("#searchBtn").on("click", toggleModal);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 // $('#log-form').on('submit', validateInputs);
 
@@ -336,3 +337,10 @@ function deleteLog(event) {
     }
   }
 }
+
+var seeLogsBtn = $('#logs-button')
+function toggleModal () {
+$('.modal').modal("toggle");
+};
+seeLogsBtn.on('click', navigateToSection)
+seeLogsBtn.on('click', toggleModal) 
