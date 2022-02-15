@@ -24,7 +24,7 @@ var i;
 
 // searchBtn.addEventListener("click", processInputs);
 $("#searchBtn").on("click", validateInputs);
-$("#searchBtn").on("click", toggleModal);
+// $("#searchBtn").on("click", toggleModal);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 // $('#log-form').on('submit', validateInputs);
 
@@ -61,6 +61,7 @@ function validateInputs(event) {
 
   if (city != "" && food != "" && restaurant != "") {
     processInputs();
+    toggleModal();
   } else {
     return;
   }
@@ -273,13 +274,13 @@ function displayLog(queryObject) {
   cardBody.append(d);
   // logDiv.append(d);
 
-  var e1 = $("<p>Calories: " + queryObject.calories + "</p>");
+  var e1 = $("<p>" + queryObject.food + "</p>");
   e1.addClass("food card-text");
   cardBody.append(e1);
   // logDiv.append(e);
 
-  var e2 = $("<p>" + queryObject.food + "</p>");
-  e2.addClass("food card-text");
+  var e2 = $("<p>Calories: " + queryObject.calories + "</p>");
+  e2.addClass("calories card-text");
   cardBody.append(e2);
 
 
