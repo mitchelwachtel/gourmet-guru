@@ -91,21 +91,6 @@ img {
     background: rgba(0, 0, 0, 0.3);
 }
 
-/* .logiDiv--blur {
-    transition: transform 1s, filter 2s ease-in-out;
-    filter: blur(2px);
-    transform: scale(1.2);
-  }
-  
-  /* The Transformation */
-  /* .logiDiv--blur:hover{
-    filter: blur(0);
-    transform: scale(1);
-  } */
-
-/* .card-column {
-    overflow:hidden;
-} */
 
 .logDiv {
     /* width:50%; */
@@ -113,12 +98,6 @@ img {
     border-radius:5%;
     /* transition: transform .5s ease; */
 }
-
-/* .logDiv:hover {
-        /* box-shadow: 0 8px 17px 0 rgb(207, 143, 22), 0 6px 20px 0 rgba(241, 203, 31, 0.952);
-        transition: all .55s ease-in-out; 
-        transform: scale(1.5);
-      } */
 
 
 .card-display {
@@ -142,7 +121,6 @@ img {
 
 }
 
-<<<<<<< HEAD
 #btn-back-to-top {
     position: fixed;
     bottom: 20px;
@@ -150,8 +128,6 @@ img {
     display: none;
   }
 
-=======
->>>>>>> main
 /* rating css */
 .rating {
     /* width: 180px; */
@@ -174,17 +150,20 @@ img {
  /* Extra small devices (portrait phones, less than 576px)
  No media query for `xs` since this is the default in Bootstrap */
 
-/* Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-    h1 {
-        font-size: 1rem;
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+    .log-review-form {
+        width:75%;
     }
+
     #form-images-row1 {
-        display: none;
+        padding-top: 15px;
     }
+
     #form-images-row2 {
         display: none;
     }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -202,26 +181,47 @@ img {
     }
 }
 
-/* Large devices (desktops, 992px and up) */
-@media (max-width: 992px) {
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
     .log-review-form {
-        width:75%;
+        width:100%;
     }
 
-    #form-images-row1 {
-        padding-top: 15px;
-    }
-
+    #form-images-row1,
     #form-images-row2 {
         display: none;
+    }
+
+    #logReviewBtn,
+    #viewRevBtn {
+        font-size: 3.5vw;
+        margin-bottom: 7px;
+    }
+}
+
+@media (max-width: 498px) {
+    .log-review-form {
+        width: 350px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    custom-p {
+        font-size: 2rem;
     }
 
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
 
-}
+} */
 
 
 /* Form Validation */
