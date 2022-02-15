@@ -64,7 +64,7 @@ img {
 }
 
 .log-review-form {
-    max-width: 100%;
+    /* max-width: 100%; */
     background-color:#B85128; 
     width: 400px;
     border-radius: 1%;
@@ -141,6 +141,14 @@ img {
     height: 20px;
 
 }
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }
+
 /* rating css */
 .rating {
     /* width: 180px; */
@@ -160,3 +168,54 @@ img {
     padding-right: 25px;
   }
   
+ /* Extra small devices (portrait phones, less than 576px)
+ No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1rem;
+    }
+    #form-images-row1 {
+        display: none;
+    }
+    #form-images-row2 {
+        display: none;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .log-review-form {
+        width:100%;
+    }
+
+    #form-images-row1 {
+        padding-top: 15px;
+    }
+
+    #form-images-row2 {
+        display: none;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+    .log-review-form {
+        width:75%;
+    }
+
+    #form-images-row1 {
+        padding-top: 15px;
+    }
+
+    #form-images-row2 {
+        display: none;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+
+}
