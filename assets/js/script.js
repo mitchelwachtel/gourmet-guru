@@ -2,6 +2,7 @@ $(document).ready(function () {
   $(".header").height($(window).height());
 });
 
+// var form = document.querySelector(".needs-validation");
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
@@ -22,11 +23,50 @@ var starCount;
 var i;
 
 // searchBtn.addEventListener("click", processInputs);
-$("#searchBtn").on("click", processInputs);
+$("#searchBtn").on("click", validateInputs);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
+// $('#log-form').on('submit', validateInputs);
+
+function validateInputs(event) {
+  event.preventDefault();
+
+  var city = inputCity.value.trim();
+  var food = inputFood.value.trim();
+  var restaurant = inputRestaurant.value.trim();
+
+  if (city == "") {
+    $("#input-city").removeClass("success");
+    $("#input-city").addClass("error");
+  } else {
+    $("#input-city").removeClass("error");
+    $("#input-city").addClass("success");
+  }
+
+  if (food == "") {
+    $("#input-food").removeClass("success");
+    $("#input-food").addClass("error");
+  } else {
+    $("#input-food").removeClass("error");
+    $("#input-food").addClass("success");
+  }
+
+  if (restaurant == "") {
+    $("#input-restaurant").removeClass("success");
+    $("#input-restaurant").addClass("error");
+  } else {
+    $("#input-restaurant").removeClass("error");
+    $("#input-restaurant").addClass("success");
+  }
+
+  if (city != "" && food != "" && restaurant != "") {
+    processInputs();
+  } else {
+    return;
+  }
+}
 
 const ratingStars = [...document.getElementsByClassName("rating__star")];
-executeRating(ratingStars)
+executeRating(ratingStars);
 function executeRating(stars) {
   const starClassActive = "rating__star fas fa-star";
   const starClassInactive = "rating__star far fa-star";
@@ -36,11 +76,11 @@ function executeRating(stars) {
     star.onclick = () => {
       i = stars.indexOf(star);
 
-      if (starCount === 'undefined') {
-      starCount = 'No Rating'
+      if (starCount === "undefined") {
+        starCount = "No Rating";
       } else {
-        starCount= i + 1;
-      };
+        starCount = i + 1;
+      }
       console.log(starCount);
 
       if (star.className === starClassInactive) {
@@ -69,13 +109,20 @@ function navigateToSection() {
 }
 
 function processInputs(event) {
-  event.preventDefault();
-  event.stopPropagation();
   
+
+  //   Array.prototype.filter.call(forms, checkVal(form));
+
+  //   function checkVal(form) {
+  //       if (form.checkValidity()) {
+  //         form.classList.add('was-validated');
+  //       }
+  //   }
+
   if (starCount === undefined) {
-    starCount = 'No Rating'
-    };
- 
+    starCount = "No Rating";
+  }
+
   // Grab the City and Query
   var city = inputCity.value;
   var restaurantQuery = inputRestaurant.value;
@@ -253,7 +300,7 @@ function displayLog(queryObject) {
   // logDiv.append(h);
 
   // $("#card-reviews").prepend(logDiv);
-  $("#card-reviews").append(cardCols);
+  $("#card-reviews").prepend(cardCols);
   cardCols.prepend(logDiv);
 }
 
@@ -270,7 +317,6 @@ function useStorage() {
   }
 }
 
-
 function deleteLog(event) {
   event.preventDefault();
   event.stopPropagation();
@@ -280,8 +326,7 @@ function deleteLog(event) {
 
   var uniqueVal = $(this).closest(".logDiv").data().unique;
 
-
-//   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
+  //   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
 
   for (i = 0; i < saveArray.length; i++) {
     if (saveArray[i].uniqueId == uniqueVal) {
