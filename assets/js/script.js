@@ -300,7 +300,7 @@ function displayLog(queryObject) {
   // logDiv.append(h);
 
   // $("#card-reviews").prepend(logDiv);
-  $("#card-reviews").append(cardCols);
+  $("#card-reviews").prepend(cardCols);
   cardCols.prepend(logDiv);
 }
 

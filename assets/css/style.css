@@ -161,14 +161,7 @@ img {
     padding-right: 25px;
   }
   
-  /* Form Validation */
-  .error-message{
-    color:red;
-    padding-left: 20px;
-} 
-.error-hide{
-    display:none;
-} 
+
 
 /* Form Validation */
 input {
@@ -180,27 +173,27 @@ input {
 }
 
 .form-control div {
-    visibility: hidden;
+    display: none;
 }
 
 .form-control.success {
-    border-color: green;
+    border: solid 2px var(--lightOrange);
 }
 
 .form-control.success i.fa-check-circle {
     visibility: visible;
-    color: green;
+    color: var(--lightOrange);
 }
 
 .form-control.success div.acceptable {
-    visibility: visible;
-    color: white;
+    display: flex;
+    color: var(--lightOrange);
     margin-top: 2px;
     font-size: 13px;
 }
 
 .form-control.error {
-    border-color: red;
+    border: solid 2px black;
 }
 
 .form-control.error i.fa-exclamation-circle {
@@ -209,8 +202,8 @@ input {
 }
 
 .form-control.error div.invalid {
-    visibility: visible;
-    color: red;
+    display: flex;
+    color: black;
     margin-top: 2px;
     font-size: 13px;
 }
