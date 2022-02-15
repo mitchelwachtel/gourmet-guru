@@ -24,7 +24,7 @@ var i;
 
 // searchBtn.addEventListener("click", processInputs);
 $("#searchBtn").on("click", validateInputs);
-$("#searchBtn").on("click", toggleModal);
+// $("#searchBtn").on("click", toggleModal);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
 // $('#log-form').on('submit', validateInputs);
 
@@ -61,6 +61,7 @@ function validateInputs(event) {
 
   if (city != "" && food != "" && restaurant != "") {
     processInputs();
+    toggleModal();
   } else {
     return;
   }
@@ -78,7 +79,7 @@ function executeRating(stars) {
       i = stars.indexOf(star);
 
       if (starCount === "undefined") {
-        starCount = "No Rating";
+        starCount = "No";
       } else {
         starCount = i + 1;
       }
@@ -93,35 +94,29 @@ function executeRating(stars) {
   });
 }
 
-
 // Function to navigate to different sections of the page
 function navigateToSection() {
-  var btnclicked = $(this).attr('id');
-    if(btnclicked === "logReviewBtn") {
-      $('html, body').animate({
-        scrollTop: $("#input-form").offset().top
-    }, 1500);
-    }
-    else {
-        $('html, body').animate({
-          scrollTop: $("#view-reviews").offset().top
-      }, 1500);
-    }
+  var btnclicked = $(this).attr("id");
+  if (btnclicked === "logReviewBtn") {
+    $("html, body").animate(
+      {
+        scrollTop: $("#input-form").offset().top,
+      },
+      1500
+    );
+  } else {
+    $("html, body").animate(
+      {
+        scrollTop: $("#view-reviews").offset().top,
+      },
+      1500
+    );
+  }
 }
 
 function processInputs(event) {
-  
-
-  //   Array.prototype.filter.call(forms, checkVal(form));
-
-  //   function checkVal(form) {
-  //       if (form.checkValidity()) {
-  //         form.classList.add('was-validated');
-  //       }
-  //   }
-
   if (starCount === undefined) {
-    starCount = "No Rating";
+    starCount = "No";
   }
 
   // Grab the City and Query
@@ -235,6 +230,7 @@ function processInputs(event) {
         saveArray.push(queryObject);
         localStorage.setItem("userLogs", JSON.stringify(saveArray));
         displayLog(queryObject);
+        clearForm();
       });
   }
 }
@@ -245,7 +241,7 @@ function displayLog(queryObject) {
 
   // Create columns to display cards - PD
   var cardCols = $("<div></div>");
-  cardCols.addClass("col-lg-4 col-md-6 col-sm-1 pb-4 card-column");
+  cardCols.addClass("col-lg-4 col-md-6 col-sm-12 pb-4 card-column");
   // End - PD
 
   var logDiv = $("<div></div>");
@@ -278,17 +274,20 @@ function displayLog(queryObject) {
   cardBody.append(d);
   // logDiv.append(d);
 
-  var e = $(
-    "<p>" + queryObject.food + " Calories: " + queryObject.calories + "</p>"
-  );
-  e.addClass("food card-text");
-  cardBody.append(e);
+  var e1 = $("<p>" + queryObject.food + "</p>");
+  e1.addClass("food card-text");
+  cardBody.append(e1);
   // logDiv.append(e);
+
+  var e2 = $("<p>Calories: " + queryObject.calories + "</p>");
+  e2.addClass("calories card-text");
+  cardBody.append(e2);
+
 
   var f = $("<p>" + queryObject.rating + "</p>");
   f.addClass("rating card-text");
   cardBody.append(f);
-  // logDiv.append(f);
+
 
   var g = $("<p>" + queryObject.comment + "</p>");
   g.addClass("comment card-text");
@@ -338,6 +337,17 @@ function deleteLog(event) {
   }
 }
 
+function clearForm() {
+  inputCity.value = null;
+  inputFood.value = null;
+  inputRestaurant.value = null;
+  inputComment.value = null;
+  $("#input-city").removeClass("success");
+  $("#input-food").removeClass("success");
+  $("#input-restaurant").removeClass("success");
+  $("#stars").children("i").removeClass("fas");
+  $("#stars").children("i").addClass("far");
+}
 var seeLogsBtn = $('#logs-button')
 function toggleModal () {
 $('.modal').modal("toggle");
