@@ -8,107 +8,182 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Gourmet Guru</title>
   </head>
 
   <body onload="useStorage()">
-    
     <!-- Header Image -->
     <header class="page-header header container-fluid" id="home-section">
-        <div class="overlay"></div>
+      <div class="overlay"></div>
 
-        <!-- Header and description -->
-        <div class="text-center header-desc">
-            <h1 class="text-white display-3 pt-5 animate__animated animate__slideInDown animate__delay-1s">Gourmet Guru</h1>
-            <p class="text-white pt-2 display-5 p-desc animate__animated animate__fadeInUp animate__delay-2s">A cool website to keep track of all your favorite restaurants. You will never have to second guess your next meal! Simply choose from the options below and get started.</p>
-            <div>
-              <button type="button" class="btn custom-btn animate__animated animate__zoomIn animate__delay-3s" id="logReviewBtn">Log a review</button>
-              <button type="button" class="btn custom-btn animate__animated animate__zoomIn animate__delay-3s" id="viewRevBtn">View saved reviews</button>
-          </div>
+      <!-- Header and description -->
+      <div class="text-center header-desc">
+        <h1
+          class="text-white display-3 pt-5 animate__animated animate__slideInDown animate__delay-1s"
+        >
+          Gourmet Guru
+        </h1>
+        <p
+          class="text-white pt-2 display-5 p-desc animate__animated animate__fadeInUp animate__delay-2s"
+        >
+          A cool website to keep track of all your favorite restaurants. You
+          will never have to second guess your next meal! Simply choose from the
+          options below and get started.
+        </p>
+        <div>
+          <button
+            type="button"
+            class="btn custom-btn animate__animated animate__zoomIn animate__delay-3s"
+            id="logReviewBtn"
+          >
+            Log a review
+          </button>
+          <button
+            type="button"
+            class="btn custom-btn animate__animated animate__zoomIn animate__delay-3s"
+            id="viewRevBtn"
+          >
+            View saved reviews
+          </button>
         </div>
+      </div>
     </header>
 
     <main class="container-fluid">
       <!-- Log a review section -->
-        <section id="input-form">
-          <div class="row log-reviews justify-content-center">
-            <h2 class="p-4 text-white h-log-reviews">Log Reviews</h2>
-          </div>
-  
-          <div class="row search-info py-5 justify-content-center">
-                <div class="col-lg-5 col-md-11 col-sm-11"> <!-- pr-0 ml-3-->
-                    <h5 class="text-dark font-weight-bold text-center font-italic">Please provide search details:</h5>
-                    <form class= "mx-auto p-5 log-review-form">
-                        <div class="form-group">
-                          <input type="text" id="inputRestaurant" class="search form-control" name="search" placeholder="Restaurant">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" id="inputCity" class="search form-control" name="search" placeholder="City">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" id="inputFood" class="search form-control" name="search" placeholder="Food">
-                        </div>
-                        <div class="form-group rating">
-                          <h5 class="font-italic">My Rating: </h5>
-                          <i class="rating__star far fa-star"></i>
-                          <i class="rating__star far fa-star"></i>
-                          <i class="rating__star far fa-star"></i>
-                          <i class="rating__star far fa-star"></i>
-                          <i class="rating__star far fa-star"></i>
-                        </div>
-                        <div class="form-group">
-                          <textarea type="text" id="inputComment" class="search form-control comment-input" name="search" placeholder="My Comments"></textarea>
-                        </div>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-lg text-center font-weight-bold font-italic custom-btn" id="searchBtn" data-toggle="modal" data-target="#exampleModal">
-                          Search
-                        </button>
-                    </form>
-                </div>
-                <div class="col-lg-5 col-md-11 col-sm-11 mr-3">
-                  <div class="container">
-                    <div class="row" id="form-images-row1">
-                        <div class="col align-self-start p-1">
-                          <img src="./assets/images/pasta.jpg" alt="Pasta"/>
-                        </div>
-                        <div class="col align-self-center p-1">
-                          <img src="./assets/images/chickenWings.jpg" alt="Chicken wings"/>
-                        </div>
+      <section id="input-form">
+        <div class="row log-reviews justify-content-center">
+          <h2 class="p-4 text-white h-log-reviews">Log Reviews</h2>
+        </div>
+
+        <div class="row search-info py-5 justify-content-center">
+          <div class="col-lg-5 col-md-5 col-sm-5 pr-0 ml-3">
+            <h5 class="text-dark font-weight-bold text-center font-italic">
+              Please provide review details:
+            </h5>
+            <form class="mx-auto p-5 log-review-form" id="log-form">
+                <div class="form-control form-group" id="input-restaurant">
+                    <input
+                      type="text"
+                      id="inputRestaurant"
+                      class="search"
+                      placeholder="Restaurant"
+                    />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="invalid">
+                      Please provide a valid Restaurant.
                     </div>
-                    <div class="row" id="form-images-row2">
-                        <div class="col align-self-end p-1">
-                          <img src="./assets/images/drinks.jpg" alt="French Toast"/>
-                        </div>
-                        <div class="col align-self-end p-1">
-                          <img src="./assets/images/FrenchToast.jpg" alt="Mojito"/>
-                        </div>
-                      </div>
-                    </div>
+                    <div class="acceptable">Lots of memories there!</div>
                   </div>
-                </div>
-          </div>
-        </section>
-        <!-- View review section -->
-        <section id="view-reviews">
-          <div class="row log-reviews justify-content-center">
-            <h2 class="p-4 text-white h-log-reviews">Saved Reviews</h2>
-          </div>
-          <div class="row py-5 justify-content-center card-display">
-              <div class="overlay-reviews"></div>
-              <div class="row mx-2" id="card-reviews">
+                  <div class="form-control form-group" id="input-city">
+                    <input
+                      type="text"
+                      id="inputCity"
+                      class="search"
+                      placeholder="City"
+                    />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="invalid">Please provide a valid City.</div>
+                    <div class="acceptable">Charming place!</div>
+                  </div>
+                  <div class="form-control form-group" id="input-food">
+                    <input
+                      type="text"
+                      id="inputFood"
+                      class="search"
+                      placeholder="Food"
+                    />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="invalid">Please provide a valid Food.</div>
+                    <div class="acceptable">Sounds Tasty!</div>
+                  </div>
+              <div class="form-group rating">
+                <h5 class="font-italic">My Rating:</h5>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
               </div>
+              <div class="form-group">
+                <textarea
+                  type="text"
+                  id="inputComment"
+                  class="search form-control comment-input"
+                  name="search"
+                  placeholder="My Comments"
+                ></textarea>
+              </div>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-lg text-center font-weight-bold font-italic custom-btn"
+                id="searchBtn"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Log
+              </button>
+            </form>
           </div>
+<<<<<<< HEAD
         </section>
         <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
         </button>
+=======
+          <div class="col-lg-5 col-md-5 col-sm-5 mr-3">
+            <div class="container">
+              <div class="row">
+                <div class="col align-self-start p-1">
+                  <img src="./assets/images/pasta.jpg" alt="Pasta" />
+                </div>
+                <div class="col align-self-center p-1">
+                  <img
+                    src="./assets/images/chickenWings.jpg"
+                    alt="Chicken wings"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col align-self-end p-1">
+                  <img src="./assets/images/drinks.jpg" alt="French Toast" />
+                </div>
+                <div class="col align-self-end p-1">
+                  <img src="./assets/images/FrenchToast.jpg" alt="Mojito" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- View review section -->
+      <section id="view-reviews">
+        <div class="row log-reviews justify-content-center">
+          <h2 class="p-4 text-white h-log-reviews">Saved Reviews</h2>
+        </div>
+        <div class="row py-5 justify-content-center card-display">
+          <div class="overlay-reviews"></div>
+          <div class="row mx-2" id="card-reviews"></div>
+        </div>
+      </section>
+>>>>>>> main
     </main>
-                    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script
@@ -122,7 +197,10 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="https://kit.fontawesome.com/33d1c7835e.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/33d1c7835e.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

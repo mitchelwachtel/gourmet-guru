@@ -142,6 +142,7 @@ img {
 
 }
 
+<<<<<<< HEAD
 #btn-back-to-top {
     position: fixed;
     bottom: 20px;
@@ -149,6 +150,8 @@ img {
     display: none;
   }
 
+=======
+>>>>>>> main
 /* rating css */
 .rating {
     /* width: 180px; */
@@ -218,4 +221,50 @@ img {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
 
+}
+
+
+/* Form Validation */
+input {
+    border: none;
+}
+
+.form-control i {
+    visibility: hidden;
+}
+
+.form-control div {
+    display: none;
+}
+
+.form-control.success {
+    border: solid 2px var(--lightOrange);
+}
+
+.form-control.success i.fa-check-circle {
+    visibility: visible;
+    color: var(--lightOrange);
+}
+
+.form-control.success div.acceptable {
+    display: flex;
+    color: var(--lightOrange);
+    margin-top: 2px;
+    font-size: 13px;
+}
+
+.form-control.error {
+    border: solid 2px black;
+}
+
+.form-control.error i.fa-exclamation-circle {
+    visibility: visible;
+    color: red;
+}
+
+.form-control.error div.invalid {
+    display: flex;
+    color: black;
+    margin-top: 2px;
+    font-size: 13px;
 }
