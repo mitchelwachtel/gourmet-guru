@@ -2,14 +2,11 @@ $(document).ready(function () {
   $(".header").height($(window).height());
 });
 
-// var form = document.querySelector(".needs-validation");
+// Declare variables
 var inputRestaurant = document.getElementById("inputRestaurant");
 var inputCity = document.getElementById("inputCity");
 var inputFood = document.getElementById("inputFood");
-// var inputRating = document.getElementById("inputRating");
 var inputComment = document.getElementById("inputComment");
-// var searchBtn = document.getElementById("searchBtn");
-// var selectPref = document.getElementById("inlineFormCustomSelectPref");
 var logRevBtn = document.getElementById("logReviewBtn");
 var viewRevBtn = document.getElementById("viewRevBtn");
 var topBtn = document.getElementById("btn-back-to-top");
@@ -18,7 +15,7 @@ var saveArray = [];
 logRevBtn.addEventListener("click", navigateToSection);
 viewRevBtn.addEventListener("click", navigateToSection);
 
-//Display top button when user scrolls down -PD
+//Display top button when user scrolls down
 window.onscroll = function () {
   scrollFunction();
 };
@@ -36,24 +33,15 @@ function scrollFunction() {
 
 topBtn.addEventListener("click", navigateToSection);
 
-// function backToTop() {
-//   document.body.scrollTop = 0;
-//   document.documentElement.scrollTop = 0;
-// }
-// End of display top button - PD
-
-// searchBtn.addEventListener("click", processInputs);
-// var saveArray = [];
+// End of display top button
 
 var starCount;
 var i;
 
-// searchBtn.addEventListener("click", processInputs);
 $("#searchBtn").on("click", validateInputs);
-// $("#searchBtn").on("click", toggleModal);
 $("#card-reviews").on("click", ".delete-button", deleteLog);
-// $('#log-form').on('submit', validateInputs);
 
+// Function to validate the input form fields
 function validateInputs(event) {
   event.preventDefault();
 
@@ -93,6 +81,7 @@ function validateInputs(event) {
   }
 }
 
+// Function to calculate the star ratings
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 executeRating(ratingStars);
 function executeRating(stars) {
@@ -109,7 +98,6 @@ function executeRating(stars) {
       } else {
         starCount = i + 1;
       }
-      console.log(starCount);
 
       if (star.className === starClassInactive) {
         for (i; i >= 0; --i) stars[i].className = starClassActive;
@@ -223,7 +211,7 @@ function processInputs(event) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
+
         queryObject.fsq_id = data.results[0].fsq_id;
         queryObject.restaurant = data.results[0].name;
         queryObject.address = data.results[0].location.address;
@@ -251,7 +239,7 @@ function processInputs(event) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
+
         queryObject.calories = data.calories.value;
         saveArray.push(queryObject);
         localStorage.setItem("userLogs", JSON.stringify(saveArray));
@@ -263,13 +251,11 @@ function processInputs(event) {
 
 function displayLog(queryObject) {
   //   Create card and append it to div
-  console.log(queryObject);
 
-  // Create columns to display cards - PD
+  // Create columns to display cards
   var cardCols = $("<div></div>");
   cardCols.addClass("col-lg-4 col-md-6 col-sm-12 pb-4 card-column");
-  // End - PD
-
+  
   var logDiv = $("<div></div>");
   logDiv.addClass("logDiv");
   logDiv.addClass("card p-3");
@@ -279,31 +265,30 @@ function displayLog(queryObject) {
   a.addClass("restaurant card-header");
   logDiv.append(a);
 
-  // Create card header - PD
+  // Create card header
   var cardBody = $("<div></div>");
   cardBody.addClass("card-body");
   logDiv.append(cardBody);
-  // End - PD
-
+  
   var b = $("<p>" + queryObject.date + "</p>");
   b.addClass("date card-text");
   cardBody.append(b);
-  // logDiv.append(b);
+  
 
   var c = $("<p>" + queryObject.city + ", " + queryObject.state + "</p>");
   c.addClass("city-state card-text");
   cardBody.append(c);
-  // logDiv.append(c);
+  
 
   var d = $("<p>" + queryObject.address + "</p>");
   d.addClass("address card-text");
   cardBody.append(d);
-  // logDiv.append(d);
+  
 
   var e1 = $("<p>" + queryObject.food + "</p>");
   e1.addClass("food card-text");
   cardBody.append(e1);
-  // logDiv.append(e);
+  
 
   var e2 = $("<p>Calories: " + queryObject.calories + "</p>");
   e2.addClass("calories card-text");
@@ -318,12 +303,12 @@ function displayLog(queryObject) {
   var g = $("<p>" + queryObject.comment + "</p>");
   g.addClass("comment card-text");
   cardBody.append(g);
-  // logDiv.append(g);
+  
 
   var h = $("<button>Delete</button>");
   h.addClass("delete-button btn custom-btn");
   cardBody.append(h);
-  // logDiv.append(h);
+  
 
   // $("#card-reviews").prepend(logDiv);
   $("#card-reviews").prepend(cardCols);
@@ -335,7 +320,6 @@ function useStorage() {
   if (localStorage.getItem("userLogs") !== null) {
     var y = localStorage.getItem("userLogs");
     saveArray = JSON.parse(y);
-    console.log(saveArray);
 
     for (i = 0; i < saveArray.length; i++) {
       displayLog(saveArray[i]);
