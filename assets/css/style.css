@@ -296,3 +296,40 @@ input {
         font-size: 1.3rem;
     }
 }
+/* Modal Style */
+.modal-content {
+    border: solid 2px var(--lightOrange);
+    background-image: url(../images/modal.jpg);
+    max-width: 100%;
+    max-height: 100%;
+    background-position: bottom;
+    background-size: 505px 423px;
+}
+    .modal-header {
+        border: none;
+    }
+    .modal-title {
+        font-size: xx-large;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        /* color: white; */
+    }
+    .modal-header button {
+        background-color: lightcoral;
+    }
+    .modal-body p {
+        font-size: x-large;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        font-weight: 700;
+        /* color: white; */
+    }
+
+    .modal-footer {
+        justify-content: space-evenly;
+        border: none;
+    }
+
+    .modal-footer>:not(:last-child) {
+        margin-right: 0.25rem;
+        background-color: var(--lightOrange);
+        color: black;
+    }
