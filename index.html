@@ -14,6 +14,9 @@
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -35,7 +38,7 @@
           Gourmet Guru
         </h1>
         <p
-          class="text-white pt-2 display-5 p-desc animate__animated animate__fadeInUp animate__delay-2s"
+          class="text-white pt-2 display-5 p-desc animate__animated animate__fadeInUp animate__delay-2s custom-p"
         >
           A cool website to keep track of all your favorite restaurants. You
           will never have to second guess your next meal! Simply choose from the
@@ -68,7 +71,7 @@
         </div>
 
         <div class="row search-info py-5 justify-content-center">
-          <div class="col-lg-5 col-md-5 col-sm-5 pr-0 ml-3">
+          <div class="col-lg-5 col-md-11 col-sm-11"> <!-- pr-0 ml-3-->
             <h5 class="text-dark font-weight-bold text-center font-italic">
               Please provide review details:
             </h5>
@@ -140,24 +143,24 @@
               </button>
             </form>
           </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 mr-3">
+          <div class="col-lg-5 col-md-11 col-sm-11">
             <div class="container">
-              <div class="row">
-                <div class="col align-self-start p-1">
+              <div class="row" id="form-images-row1">
+                <div class="col p-1">
                   <img src="./assets/images/pasta.jpg" alt="Pasta" />
                 </div>
-                <div class="col align-self-center p-1">
+                <div class="col p-1">
                   <img
-                    src="./assets/images/chickenWings.jpg"
+                    src="./assets/images/chickenWings2.jpg"
                     alt="Chicken wings"
                   />
                 </div>
               </div>
-              <div class="row">
-                <div class="col align-self-end p-1">
-                  <img src="./assets/images/drinks.jpg" alt="French Toast" />
+              <div class="row" id="form-images-row2">
+                <div class="col p-1">
+                  <img src="./assets/images/Drinks2.jpg" alt="French Toast" />
                 </div>
-                <div class="col align-self-end p-1">
+                <div class="col p-1">
                   <img src="./assets/images/FrenchToast.jpg" alt="Mojito" />
                 </div>
               </div>
@@ -175,6 +178,9 @@
           <div class="row mx-2" id="card-reviews"></div>
         </div>
       </section>
+      <button type="button" title="Back to top" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+      </button>
       <!-- modal -->
       <div class="modal" tabindex="-1">
         <div class="modal-dialog">

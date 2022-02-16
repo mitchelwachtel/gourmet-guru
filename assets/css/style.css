@@ -22,7 +22,11 @@ img {
     background-image: url('../images/main_page_image.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
     position: relative;
+
+    /* background-position: center center; background-repeat: no-repeat; background-attachment: fixed */
 }
 
 .overlay {
@@ -64,7 +68,7 @@ img {
 }
 
 .log-review-form {
-    max-width: 100%;
+    /* max-width: 100%; */
     background-color:#B85128; 
     width: 400px;
     border-radius: 1%;
@@ -91,21 +95,6 @@ img {
     background: rgba(0, 0, 0, 0.3);
 }
 
-/* .logiDiv--blur {
-    transition: transform 1s, filter 2s ease-in-out;
-    filter: blur(2px);
-    transform: scale(1.2);
-  }
-  
-  /* The Transformation */
-  /* .logiDiv--blur:hover{
-    filter: blur(0);
-    transform: scale(1);
-  } */
-
-/* .card-column {
-    overflow:hidden;
-} */
 
 .logDiv {
     /* width:50%; */
@@ -113,12 +102,6 @@ img {
     border-radius:5%;
     /* transition: transform .5s ease; */
 }
-
-/* .logDiv:hover {
-        /* box-shadow: 0 8px 17px 0 rgb(207, 143, 22), 0 6px 20px 0 rgba(241, 203, 31, 0.952);
-        transition: all .55s ease-in-out; 
-        transform: scale(1.5);
-      } */
 
 
 .card-display {
@@ -131,6 +114,12 @@ img {
 .card-header {
     background-color: #DF362D;
     color:white;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+}
+
+.card-text {
+    font-family: 'Roboto Slab', serif;
 }
 
 /* Id's */
@@ -142,10 +131,17 @@ img {
 
 }
 
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }
+
 /* rating css */
 .rating {
     /* width: 180px; */
-    height: 37px;
+    /* height: 37px; */
     /* background-color: black; */
     display: flex;
     /* color: white; */
@@ -161,7 +157,6 @@ img {
     padding-right: 25px;
   }
   
-
 
 /* Form Validation */
 input {
@@ -207,6 +202,19 @@ input {
     margin-top: 2px;
     font-size: 13px;
 }
+
+
+/* Extra small devices (portrait phones, less than 576px)
+ No media query for `xs` since this is the default in Bootstrap */
+
+ /* Extra large devices (large desktops, 1200px and up) */
+/* @media (max-width: 1310px) {
+    #form-images-row2 {
+        display: none;
+    }
+} */
+
+
 /* Modal Style */
 .modal-content {
     border: solid 2px var(--lightOrange);
@@ -244,3 +252,86 @@ input {
         background-color: var(--lightOrange);
         color: black;
     }
+
+    /* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+    .log-review-form {
+        width:75%;
+    }
+
+    #form-images-row1 {
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    #form-images-row2 {
+        display: none;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .log-review-form {
+        width:100%;
+        margin: 40px 0px;
+    }
+
+    #form-images-row1 {
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    #form-images-row2 {
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .log-review-form {
+        width:100%;
+    }
+
+    #form-images-row1,
+    #form-images-row2 {
+        display: none;
+    }
+
+    #logReviewBtn,
+    #viewRevBtn {
+        font-size: 3.5vw;
+        margin-bottom: 7px;
+    }
+}
+
+@media (max-width: 498px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .custom-p {
+        font-size: 1rem;
+    }
+
+    .log-review-form {
+        width: 350px;
+    }
+
+    .h-log-reviews {
+        font-size: 2rem;
+    }
+
+    .logDiv {
+        font-size: 0.8rem;
+        margin: 0px 10px;
+    }
+
+    .card-header {
+        font-size: 1.3rem;
+    }
+}

@@ -12,10 +12,36 @@ var inputComment = document.getElementById("inputComment");
 // var selectPref = document.getElementById("inlineFormCustomSelectPref");
 var logRevBtn = document.getElementById("logReviewBtn");
 var viewRevBtn = document.getElementById("viewRevBtn");
+var topBtn = document.getElementById("btn-back-to-top");
 var saveArray = [];
 
 logRevBtn.addEventListener("click", navigateToSection);
 viewRevBtn.addEventListener("click", navigateToSection);
+
+//Display top button when user scrolls down -PD
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 50 ||
+    document.documentElement.scrollTop > 50
+  ) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+}
+
+topBtn.addEventListener("click", navigateToSection);
+
+// function backToTop() {
+//   document.body.scrollTop = 0;
+//   document.documentElement.scrollTop = 0;
+// }
+// End of display top button - PD
+
 // searchBtn.addEventListener("click", processInputs);
 // var saveArray = [];
 
@@ -96,21 +122,21 @@ function executeRating(stars) {
 
 // Function to navigate to different sections of the page
 function navigateToSection() {
-  var btnclicked = $(this).attr("id");
-  if (btnclicked === "logReviewBtn") {
-    $("html, body").animate(
-      {
-        scrollTop: $("#input-form").offset().top,
-      },
-      1500
-    );
-  } else {
-    $("html, body").animate(
-      {
-        scrollTop: $("#view-reviews").offset().top,
-      },
-      1500
-    );
+  var btnclicked = $(this).attr('id');
+    if(btnclicked === "logReviewBtn") {
+      $('html, body').animate({
+        scrollTop: $("#input-form").offset().top
+    }, 1500);
+    }
+    else if((btnclicked === "viewRevBtn") || (btnclicked === "logs-button")) {
+        $('html, body').animate({
+          scrollTop: $("#view-reviews").offset().top
+      }, 1500);
+    }
+    else  {
+      $('html, body').animate({
+        scrollTop: 0
+    }, 1500);
   }
 }
 
