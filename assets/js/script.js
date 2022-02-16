@@ -128,7 +128,7 @@ function navigateToSection() {
   }
 }
 
-function processInputs(event) {
+function processInputs() {
   if (starCount === undefined) {
     starCount = "No";
   }
@@ -310,7 +310,6 @@ function displayLog(queryObject) {
   cardBody.append(h);
   
 
-  // $("#card-reviews").prepend(logDiv);
   $("#card-reviews").prepend(cardCols);
   cardCols.prepend(logDiv);
 }
@@ -336,7 +335,6 @@ function deleteLog(event) {
 
   var uniqueVal = $(this).closest(".logDiv").data().unique;
 
-  //   Modal should appear now, if else statement allows this function to continue if Modal selection is true and function should quit if Modal selection is false
 
   for (i = 0; i < saveArray.length; i++) {
     if (saveArray[i].uniqueId == uniqueVal) {
