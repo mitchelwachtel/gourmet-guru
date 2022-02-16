@@ -36,8 +36,7 @@ This application is built using :
 
 ### Screen Shot:
 
-<br>
-![www mitchelwachtel me_gourmet-guru_](https://user-images.githubusercontent.com/95650769/154206545-ea53ad89-bde1-408b-ab3f-74441f3868ac.png)
+![www mitchelwachtel me_gourmet-guru_](https://user-images.githubusercontent.com/95650769/154344288-e5a5bdf1-60b5-444e-a25b-499cf54b864b.png)
 
 ### Application URL:
 
