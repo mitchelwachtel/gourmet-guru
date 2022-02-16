@@ -8,17 +8,22 @@
 
 
 ### Description: 
-Gourmet guru helps any food lover keep track of all their favorite restaurants, their favorite dishes at those restaurants and gives a rough estimate of the calories of the dish. It stores the user inputs into local storage and creates elements in the HTML via JS. Each new card containing the user input data has a delete button function to delete that particular item from storage. 
+Gourmet guru helps any food lover keep track of all their favorite restaurants, their favorite dishes at those restaurants and gives a rough estimate of the calories of the dish. On page load animate was used to make a nice presentation. The user is presented with two buttons that upon user choice will either bring them to the form where they can create their logs or to the section where their previous logs are stored. Any time that the user is away from the top of the page, a button that will bring users back to the top of the page is displayed in the lower right corner of the screen.
 <br>
 <br>
-Upon submission, a styled modal is displayed that allows for the user to travel to their logged entries or stay where they are and input another entry. There are also buttons at the top of the page that also move the user to their stored logs or the input section. As well as a button that will bring users back to the top of the page. We used foursquare server-side API to fetch most of the data about the searched restaurant and we used spoonify server-side API to get the estimated caloric value of the user input. We also used open weather api to get the latitudes and longitudes we needed for using Foursquare and moment.js to log the date of the user's entry.
+The submission form stores the user inputs into local storage and creates elements in the HTML via JS referred to as cards. Each new card containing the user input data has a delete button function to delete that particular item from storage. 
 <br>
 <br>
-We also attached validations to the user input fields that will let the user know when something invalid has been entered. An interactive 5-star rating was added using font-awesome We have a clean and catching UI/design from everything on the page to the modal that appears to create a friendly and inviting user experience.
+Upon submission, a styled modal is displayed that allows for the user to travel to their logged entries or stay where they are and input another entry.  Validations were attached using bootstrap to the user input fields that will let the user know when something invalid has been entered. An interactive 5-star rating was added using font-awesome.
 <br>
+<br>
+We used foursquare server-side API to fetch most of the data about the searched restaurant including true title and address. We used spoonify server-side API to get the estimated caloric value of the user input. Moment,js was used to log the date of the entry and open weather api was used to get the latitudes and longitudes we needed for using Foursquare.
+<br>
+<br>
+We have a clean and catching UI/design from everything on the page to the modal that appears to create a friendly and inviting user experience. Some fonts were provided by Google Fonts.
 <br>
 ### Our Roles:
-Together our team are the sole inventors, creators, deisgners and programmers of the project. Our job was to come up with a concept that we could execute fully meeting or exceedin the acceptance criteria provided to us by the course. We were to work together using separate branches that we would merge into main after review.
+Together our team are the sole inventors, creators, designers and programmers of the project. Our job was to come up with a concept that we could execute fully meeting or exceeding the acceptance criteria provided to us by the course. We were to work together using separate branches that we would merge into main after review, gaining an applicable understanding of how to use Github as a team.
 <br>
 
 ### Built with: 
@@ -33,6 +38,8 @@ This application is built using :
 * Open Weather API
 * Foursquare
 * Spoonify
+* animate
+* Google Fonts
 
 ### Screen Shot:
 
