@@ -1,20 +1,50 @@
 # Gourmet-Guru
+### Table of contents
+* [Description](#description)
+* [Our Roles](#our-roles)
+* [Built with](#built-with)
+* [Screen Shot](#screen-shot)
+* [Application URL](#application-url)
 
-Search Endpoint URL: https://api.yelp.com/v3/businesses/search
 
+### Description: 
+Gourmet guru helps any food lover keep track of all their favorite restaurants, their favorite dishes at those restaurants and gives a rough estimate of the calories of the dish. On page load animate was used to make a nice presentation. The user is presented with two buttons that upon user choice will either bring them to the form where they can create their logs or to the section where their previous logs are stored. Any time that the user is away from the top of the page, a button that will bring users back to the top of the page is displayed in the lower right corner of the screen.
+<br>
+<br>
+The submission form stores the user inputs into local storage and creates elements in the HTML via JS referred to as cards. Each new card containing the user input data has a delete button function to delete that particular item from storage. 
+<br>
+<br>
+Upon submission, a styled modal is displayed that allows for the user to travel to their logged entries or stay where they are and input another entry.  Validations were attached using bootstrap to the user input fields that will let the user know when something invalid has been entered. An interactive 5-star rating was added using font-awesome.
+<br>
+<br>
+We used foursquare server-side API to fetch most of the data about the searched restaurant including true title and address. We used spoonify server-side API to get the estimated caloric value of the user input. Moment,js was used to log the date of the entry and open weather api was used to get the latitudes and longitudes we needed for using Foursquare.
+<br>
+<br>
+We have a clean and catching UI/design from everything on the page to the modal that appears to create a friendly and inviting user experience. Some fonts were provided by Google Fonts.
+<br>
+### Our Roles:
+Together our team are the sole inventors, creators, designers and programmers of the project. Our job was to come up with a concept that we could execute fully meeting or exceeding the acceptance criteria provided to us by the course. We were to work together using separate branches that we would merge into main after review, gaining an applicable understanding of how to use Github as a team.
+<br>
 
-FOURSQUARE API KEY:
-fsq3a28437clLV4OGd1TqTQpoGeqZglCHRplaWmbBfL4UzY=
-Test2: fsq3MfBufH9W2b4zM3n+v1Az8bRnu3LD1blFcroq5f/lYSg=
+### Built with: 
+This application is built using :
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+* jQuery
+* Font Awesome
+* Moment.js
+* Open Weather API
+* Foursquare
+* Spoonify
+* animate
+* Google Fonts
 
-FOURSQUARE Client ID:
-1GGBBCJJ3XKLVADBUAKSGMWY3VVEJ5RDM4BCLQVCJHAAHDHU
+### Screen Shot:
 
-FOURSQUARE Client Secret:
-YWRQRVRRGZZTW1NW3J0BAXEQLUPONL1OKBXWVVPECVPR3CDX
+![www mitchelwachtel me_gourmet-guru_](https://user-images.githubusercontent.com/95650769/154344288-e5a5bdf1-60b5-444e-a25b-499cf54b864b.png)
 
-FOURSQUARE Place Search Reference:
-https://developer.foursquare.com/reference/place-search
+### Application URL:
 
-https://fastly.4sqi.net/img/general/100x100/67444196_4GI_X_AgFNduNOv91TmR6iV8XRyiFAjyU1dKYb83HeU.jpg
-^^ in foursquare's photo response, you get prefix & suffix. In between, you must add the dimensions of your photo. 100x100 example above.
+http://www.mitchelwachtel.me/gourmet-guru/
