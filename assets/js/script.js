@@ -128,7 +128,7 @@ function navigateToSection() {
         scrollTop: $("#input-form").offset().top
     }, 1500);
     }
-    else if(btnclicked === "viewRevBtn") {
+    else if((btnclicked === "viewRevBtn") || (btnclicked === "logs-button")) {
         $('html, body').animate({
           scrollTop: $("#view-reviews").offset().top
       }, 1500);
