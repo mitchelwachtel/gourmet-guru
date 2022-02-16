@@ -17,7 +17,7 @@ The submission form stores the user inputs into local storage and creates elemen
 Upon submission, a styled modal is displayed that allows for the user to travel to their logged entries or stay where they are and input another entry.  Validations were attached using bootstrap to the user input fields that will let the user know when something invalid has been entered. An interactive 5-star rating was added using font-awesome.
 <br>
 <br>
-We used foursquare server-side API to fetch most of the data about the searched restaurant including true title and address. We used spoonify server-side API to get the estimated caloric value of the user input. Moment,js was used to log the date of the entry and open weather api was used to get the latitudes and longitudes we needed for using Foursquare.
+We used foursquare server-side API to fetch most of the data about the searched restaurant including true title and address. We used spoontacular server-side API to get the estimated caloric value of the user input. Moment,js was used to log the date of the entry and open weather api was used to get the latitudes and longitudes we needed for using Foursquare.
 <br>
 <br>
 We have a clean and catching UI/design from everything on the page to the modal that appears to create a friendly and inviting user experience. Some fonts were provided by Google Fonts.
@@ -37,7 +37,7 @@ This application is built using :
 * Moment.js
 * Open Weather API
 * Foursquare
-* Spoonify
+* Spoontacular
 * animate
 * Google Fonts
 
