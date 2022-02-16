@@ -3,7 +3,7 @@
     --lightOrange: #FFAF1C;
 }
 
-/* Elements */
+/* Header */
 h1,
 h2 {
     font-family: 'Dancing Script', cursive;
@@ -12,12 +12,10 @@ h2 {
 img {
     max-height: 400px;
     max-width:250px;
-    /* padding-left: 15px; */
     border: 5px solid var(--lightOrange);
     border-radius: 2%;
 }
 
-/* Classes */
 .header {
     background-image: url('../images/main_page_image.jpg');
     background-size: cover;
@@ -25,8 +23,6 @@ img {
     background-repeat: no-repeat; 
     background-attachment: fixed;
     position: relative;
-
-    /* background-position: center center; background-repeat: no-repeat; background-attachment: fixed */
 }
 
 .overlay {
@@ -58,7 +54,6 @@ img {
 }
 
 .log-reviews {
-    /* background-color:#C76B57; */
     background-color:#A82810;
     opacity: 0.8;
 }
@@ -68,12 +63,10 @@ img {
 }
 
 .log-review-form {
-    /* max-width: 100%; */
     background-color:#B85128; 
     width: 400px;
     border-radius: 1%;
     z-index: 2;
-    /* position: relative; */
 }
 
 .search-info {
@@ -81,9 +74,6 @@ img {
     background-size: cover;
     background-position: center;
     position: relative;
-    /* opacity: 0.8; */
-    /* border:1px solid; */
-    /* background: rgba(0, 0, 0, 0.3); */
 }
 
 .overlay-reviews {
@@ -95,12 +85,11 @@ img {
     background: rgba(0, 0, 0, 0.3);
 }
 
+/* Card reviews */
 
 .logDiv {
-    /* width:50%; */
     border: 5px solid var(--lightOrange);
     border-radius:5%;
-    /* transition: transform .5s ease; */
 }
 
 
@@ -122,7 +111,7 @@ img {
     font-family: 'Roboto Slab', serif;
 }
 
-/* Id's */
+
 #card-reviews {
     width:100%;
 }
@@ -140,11 +129,7 @@ img {
 
 /* rating css */
 .rating {
-    /* width: 180px; */
-    /* height: 37px; */
-    /* background-color: black; */
     display: flex;
-    /* color: white; */
     align-items: baseline;
   }
   
@@ -204,17 +189,6 @@ input {
 }
 
 
-/* Extra small devices (portrait phones, less than 576px)
- No media query for `xs` since this is the default in Bootstrap */
-
- /* Extra large devices (large desktops, 1200px and up) */
-/* @media (max-width: 1310px) {
-    #form-images-row2 {
-        display: none;
-    }
-} */
-
-
 /* Modal Style */
 .modal-content {
     border: solid 2px var(--lightOrange);
@@ -230,7 +204,6 @@ input {
     .modal-title {
         font-size: xx-large;
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-        /* color: white; */
     }
     .modal-header button {
         background-color: lightcoral;
@@ -239,7 +212,6 @@ input {
         font-size: x-large;
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
         font-weight: 700;
-        /* color: white; */
     }
 
     .modal-footer {
@@ -253,6 +225,7 @@ input {
         color: black;
     }
 
+    /* Media queries */
     /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
     .log-review-form {
@@ -309,6 +282,7 @@ input {
     }
 }
 
+/* Smaller devices (small phones, 498px and up) */
 @media (max-width: 498px) {
     h1 {
         font-size: 1.5rem;
