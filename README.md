@@ -49,6 +49,8 @@ This application is built using :
 
 http://www.mitchelwachtel.me/gourmet-guru/
 
+### MIT License
+
 Copyright (c) [2022] [Priyanka Dhende, Mitch Wachtel, & Ross McWey]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
